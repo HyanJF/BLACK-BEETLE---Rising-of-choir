@@ -41,7 +41,7 @@ public class WaypointController : MonoBehaviour
                     if (node.isReserved)
                         continue;
 
-                    if (node.movementPenalty > 0)
+                    if (node.movementPenalty > 5)
                         continue;
 
                     waypoints.Add(

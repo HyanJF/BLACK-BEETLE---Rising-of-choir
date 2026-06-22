@@ -37,7 +37,7 @@ public class BotBrain : MonoBehaviour
         }
 
         if (
-            bot.Needs.bladder > 80 &&
+            bot.Needs.bladder > 60 &&
             !bot.Blackboard.IsDecisionBlocked(
                 BotDecision.GoToBathroom
             )
@@ -47,7 +47,7 @@ public class BotBrain : MonoBehaviour
         }
 
         if (
-            bot.Needs.thirst > 70 &&
+            bot.Needs.thirst > 50 &&
             bot.Goals.DrinksConsumed <
             bot.Goals.RequiredDrinks &&
             !bot.Blackboard.IsDecisionBlocked(

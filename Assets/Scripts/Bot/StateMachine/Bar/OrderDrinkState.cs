@@ -25,6 +25,7 @@ public class OrderDrinkState : State
             bot.Needs.thirst = 0f;
             bot.Needs.bladder += 10f;
 
+            if(bot.Mood.happiness < bot.Mood.maxHappiness)
             bot.Mood.happiness += 10f;
 
             bot.Goals.DrinksConsumed++;
