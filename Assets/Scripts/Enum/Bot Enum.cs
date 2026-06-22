@@ -34,3 +34,13 @@ public enum RouteType
     Long,
     VeryLong
 }
+
+// Pensaminetos
+public enum ThoghtType
+{
+    Bladder,
+    Drink,
+    Sit,
+    Angry
+
+}

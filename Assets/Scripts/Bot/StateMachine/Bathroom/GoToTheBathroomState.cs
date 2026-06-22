@@ -50,6 +50,8 @@ public class GoToTheBathroomState : State
                 15f
             );
 
+            bot.Thought.Anim(ThoghtType.Angry, 2f);
+
             bot.StateMachine.ChangeState(
                 new WanderState(bot)
             );

@@ -10653,8 +10653,8 @@ MonoBehaviour:
     weight: 5
   - customerType: {fileID: 11400000, guid: d4b062b40190e3a4486efa4df2aa7169, type: 2}
     weight: 3
-  spawnInterval: 0.5
-  maxCustomers: 300
+  spawnInterval: 2
+  maxCustomers: 50
   activeBots: []
 --- !u!1 &1712789049
 GameObject:

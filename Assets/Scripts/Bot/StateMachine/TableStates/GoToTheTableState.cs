@@ -34,6 +34,8 @@ public class GoToTheTable : State
                 BotDecision.GoToTable, 
                 10f);
 
+            bot.Thought.Anim(ThoghtType.Angry, 2f);
+
             bot.StateMachine.ChangeState(
                 new WanderState(bot)
             );

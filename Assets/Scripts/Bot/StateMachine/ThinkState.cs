@@ -31,6 +31,7 @@ public class ThinkState : State
 
             case BotDecision.GoToBar:
 
+                bot.Thought.Anim(ThoghtType.Drink, 3f);
                 bot.StateMachine.ChangeState(
                     new GoToBarState(bot)
                 );
@@ -39,6 +40,7 @@ public class ThinkState : State
 
             case BotDecision.GoToBathroom:
 
+                bot.Thought.Anim(ThoghtType.Bladder, 4f);
                 bot.StateMachine.ChangeState(
                     new GoToTheBathroomState(bot)
                 );
@@ -55,6 +57,7 @@ public class ThinkState : State
 
             case BotDecision.GoToTable:
 
+                bot.Thought.Anim(ThoghtType.Sit, 2.5f);
                 bot.StateMachine.ChangeState(
                     new GoToTheTable(bot)
                 );

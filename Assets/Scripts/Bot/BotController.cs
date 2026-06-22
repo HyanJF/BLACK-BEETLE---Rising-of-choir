@@ -20,11 +20,10 @@ public class BotController : MonoBehaviour
 
     public BotMood Mood { get; private set; }
 
-    public BotVisualController VisualController
-    {
-        get;
-        private set;
-    }
+    public BotVisualController VisualController { get; private set; }
+
+    public BotThoughtVisual Thought { get; private set; }
+
 
     protected StateMachine stateMachine;
 
@@ -50,6 +49,9 @@ public class BotController : MonoBehaviour
 
         Mood =
             GetComponent<BotMood>();
+
+        Thought =
+            GetComponentInChildren<BotThoughtVisual>();
 
         ResetRuntimeData();
     }

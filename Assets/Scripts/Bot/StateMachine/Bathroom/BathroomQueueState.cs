@@ -58,6 +58,8 @@ public class BathroomQueueState : State
                 15f
             );
 
+            bot.Thought.Anim(ThoghtType.Angry, 2f);
+
             bot.StateMachine.ChangeState(
                 new WanderState(bot)
             );
@@ -67,7 +69,6 @@ public class BathroomQueueState : State
 
         if (bathroom.IsFirstInQueue(bot) && bathroom.HasFreeStall)
         {
-            Debug.Log($"[QUEUE->BATH] {bot.name} entra al baño");
 
             bathroom.RemoveFromQueue(bot);
 

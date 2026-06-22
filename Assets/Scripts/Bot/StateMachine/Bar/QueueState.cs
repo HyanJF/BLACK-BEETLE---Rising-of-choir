@@ -25,6 +25,8 @@ public class QueueState : State
                 BotDecision.GoToBar,
                 10f);
 
+            bot.Thought.Anim(ThoghtType.Angry, 2f);
+
             bot.StateMachine.ChangeState(
                 new WanderState(bot)
             );
@@ -70,6 +72,8 @@ public class QueueState : State
             bot.Blackboard.BlockDecision(
                 BotDecision.GoToBar,
                 10f);
+
+            bot.Thought.Anim(ThoghtType.Angry, 2f);
 
             bot.StateMachine.ChangeState(
                 new WanderState(bot));

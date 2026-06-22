@@ -4,6 +4,7 @@ public class BotVisualController : MonoBehaviour
 {
     private SpriteRenderer botSprite;
     private Collider2D botCollider;
+    public GameObject thoughtBot;
 
     private void Start()
     {
@@ -15,12 +16,14 @@ public class BotVisualController : MonoBehaviour
     {
         botSprite.enabled = false;
         botCollider.enabled = false;
+        thoughtBot.SetActive(false);
     }
 
     public void ShowBot()
     {
         botSprite.enabled = true;
         botCollider.enabled = true;
+        thoughtBot.SetActive(true);
     }
 
 }
