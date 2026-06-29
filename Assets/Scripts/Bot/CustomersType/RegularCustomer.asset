@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CustomerTypeSO
   requiredDrinks: 1
   requiredSocialActivities: 3
-  maxThirst: 100
-  maxComfort: 100
-  maxBladder: 100
-  thirst: 30
+  maxThirst: 150
+  maxComfort: 150
+  maxBladder: 150
+  thirst: 10
   comfort: 10
   bladder: 10
   thirstRate: 1
