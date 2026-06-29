@@ -13,12 +13,34 @@ MonoBehaviour:
   m_Name: HeavyDrinker
   m_EditorClassIdentifier: Assembly-CSharp::CustomerTypeSO
   requiredDrinks: 6
-  requiredSocialActivities: 0
-  thirst: 70
-  comfort: 5
-  bladder: 10
-  maxPatience: 90
+  requiredSocialActivities: 1
+  maxThirst: 70
+  maxComfort: 150
+  maxBladder: 150
+  thirst: 30
+  comfort: 0
+  bladder: 0
+  thirstRate: 3
+  comfortRate: 0.5
+  bladderRate: 0.5
+  thirstThreshold: 0.4
+  comfortThreshold: 0.7
+  bladderThreshold: 0.8
+  maxPatience: 60
   patienceRecoveryRate: 1
   patienceLossRate: 12
   maxHappiness: 100
   moodMultiplier: 1.2
+  tipMultiplier: 0.5
+  minDrinksPerOrder: 2
+  maxDrinksPerOrder: 7
+  displayName: HeavyDrinker
+  drinkPreferences:
+  - drink: 1
+    weight: 80
+  - drink: 2
+    weight: 5
+  - drink: 3
+    weight: 15
+  - drink: 4
+    weight: 0

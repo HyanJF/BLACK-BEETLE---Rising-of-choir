@@ -22,6 +22,16 @@ public class GoToTheExitState : State
         bot.Navigation.NavigateTo(
             bot.Blackboard.TargetPlace.position
         );
+
+        if(bot.Mood.happiness > 75)
+        {
+            bot.Thought.Anim(ThoghtType.Happy, 2f);
+        }
+
+        if(bot.Mood.happiness < 25)
+        {
+            bot.Thought.Anim(ThoghtType.Angry, 2f);
+        }
     }
 
     public override void Exit()

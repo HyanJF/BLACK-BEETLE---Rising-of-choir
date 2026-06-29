@@ -14,11 +14,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CustomerTypeSO
   requiredDrinks: 2
   requiredSocialActivities: 0
+  maxThirst: 150
+  maxComfort: 70
+  maxBladder: 100
   thirst: 35
   comfort: 40
   bladder: 10
-  maxPatience: 110
-  patienceRecoveryRate: 3
-  patienceLossRate: 8
-  maxHappiness: 100
+  thirstRate: 2
+  comfortRate: 1
+  bladderRate: 0.5
+  thirstThreshold: 0.9
+  comfortThreshold: 0.4
+  bladderThreshold: 0.7
+  maxPatience: 150
+  patienceRecoveryRate: 4
+  patienceLossRate: 6
+  maxHappiness: 70
   moodMultiplier: 0.7
+  tipMultiplier: 0.05
+  minDrinksPerOrder: 1
+  maxDrinksPerOrder: 2
+  displayName: Lonely
+  drinkPreferences:
+  - drink: 1
+    weight: 30
+  - drink: 2
+    weight: 5
+  - drink: 3
+    weight: 15
+  - drink: 4
+    weight: 50

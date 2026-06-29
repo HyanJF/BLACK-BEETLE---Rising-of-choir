@@ -13,12 +13,34 @@ MonoBehaviour:
   m_Name: Partygoer
   m_EditorClassIdentifier: Assembly-CSharp::CustomerTypeSO
   requiredDrinks: 2
-  requiredSocialActivities: 5
-  thirst: 40
-  comfort: 10
-  bladder: 5
-  maxPatience: 150
+  requiredSocialActivities: 6
+  maxThirst: 200
+  maxComfort: 40
+  maxBladder: 150
+  thirst: 0
+  comfort: 35
+  bladder: 0
+  thirstRate: 1
+  comfortRate: 3
+  bladderRate: 1
+  thirstThreshold: 0.7
+  comfortThreshold: 0.3
+  bladderThreshold: 0.8
+  maxPatience: 200
   patienceRecoveryRate: 3
-  patienceLossRate: 8
-  maxHappiness: 100
+  patienceLossRate: 12
+  maxHappiness: 150
   moodMultiplier: 1
+  tipMultiplier: 0.3
+  minDrinksPerOrder: 1
+  maxDrinksPerOrder: 5
+  displayName: Partygoer
+  drinkPreferences:
+  - drink: 1
+    weight: 30
+  - drink: 2
+    weight: 5
+  - drink: 3
+    weight: 50
+  - drink: 4
+    weight: 15

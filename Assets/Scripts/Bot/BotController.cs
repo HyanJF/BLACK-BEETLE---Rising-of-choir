@@ -23,10 +23,17 @@ public class BotController : MonoBehaviour
     public BotVisualController VisualController { get; private set; }
 
     public BotThoughtVisual Thought { get; private set; }
+    public CustomerTypeSO CustomerType {  get; private set; }
+    public string DebugInfo =>
+    $"{name}\n" +
+    $"{CustomerType?.displayName ?? "None"}\n" +
+    $"{StateMachine.CurrentState.GetType().Name}";
 
+    [Header("OrderRange")]
+    public int MinDrinksPerOrder { get; private set; }
+    public int MaxDrinksPerOrder { get; private set; }
 
     protected StateMachine stateMachine;
-
     public StateMachine StateMachine =>
         stateMachine;
 
@@ -64,6 +71,9 @@ public class BotController : MonoBehaviour
     public void ActivateBot(
         CustomerTypeSO type)
     {
+        VisualController.ShowBot();
+        Thought.DisableThought();
+
         ResetRuntimeData();
 
         Initialize(type);
@@ -110,6 +120,9 @@ public class BotController : MonoBehaviour
     public void Initialize(
         CustomerTypeSO type)
     {
+        CustomerType = 
+            type;
+
         Goals.RequiredDrinks =
             type.requiredDrinks;
 
@@ -125,17 +138,41 @@ public class BotController : MonoBehaviour
         Needs.bladder =
             type.bladder;
 
+        Needs.maxThirst =
+            type.maxThirst;
+
+        Needs.maxComfort =
+            type.maxComfort;
+
+        Needs.maxBladder =
+            type.maxBladder;
+
+        Needs.thirstRate =
+            type.thirstRate;
+
+        Needs.comfortRate =
+            type.comfortRate;
+
+        Needs.bladderRate =
+            type.bladderRate;
+
         Needs.maxPatience =
             type.maxPatience;
 
         Needs.currentPatience =
-            type.maxPatience;
+            Needs.maxPatience;
 
         Needs.patienceRecoveryRate =
             type.patienceRecoveryRate;
 
         Needs.patienceLossRate =
             type.patienceLossRate;
+
+        MinDrinksPerOrder =
+            type.minDrinksPerOrder;
+
+        MaxDrinksPerOrder =
+            type.maxDrinksPerOrder;
 
         Mood.maxHappiness =
             type.maxHappiness;
@@ -145,5 +182,8 @@ public class BotController : MonoBehaviour
 
         Mood.moodMultiplier =
             type.moodMultiplier;
+
+        Mood.tipMultiplier =
+            type.tipMultiplier;
     }
 }

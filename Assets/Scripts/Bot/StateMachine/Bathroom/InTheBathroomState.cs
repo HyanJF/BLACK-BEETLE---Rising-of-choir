@@ -21,6 +21,7 @@ public class InTheBathroomState : State
             bot.Needs.bladder / 100f
         );
 
+        bot.Thought.DisableThought();
         bot.VisualController.HideBot();
     }
 
@@ -44,6 +45,7 @@ public class InTheBathroomState : State
 
     public override void Exit()
     {
+        bot.Thought.Anim(ThoghtType.Happy, 2f);
         bot.VisualController.ShowBot();
     }
 }

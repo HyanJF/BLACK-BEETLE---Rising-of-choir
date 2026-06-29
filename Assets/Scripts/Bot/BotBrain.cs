@@ -30,41 +30,40 @@ public class BotBrain : MonoBehaviour
             return BotDecision.Exit;
         }
 
-
         if (bot.Goals.VisitCompleted)
         {
             return BotDecision.Exit;
         }
 
         if (
-            bot.Needs.bladder > 60 &&
+            bot.Needs.BladderPercent >=
+            bot.CustomerType.bladderThreshold &&
             !bot.Blackboard.IsDecisionBlocked(
-                BotDecision.GoToBathroom
-            )
+                BotDecision.GoToBathroom)
         )
         {
             return BotDecision.GoToBathroom;
         }
 
         if (
-            bot.Needs.thirst > 50 &&
+            bot.Needs.ThirstPercent >=
+            bot.CustomerType.thirstThreshold &&
             bot.Goals.DrinksConsumed <
             bot.Goals.RequiredDrinks &&
             !bot.Blackboard.IsDecisionBlocked(
-                BotDecision.GoToBar
-            )
+                BotDecision.GoToBar)
         )
         {
             return BotDecision.GoToBar;
         }
 
         if (
-            bot.Needs.comfort > 30 &&
+            bot.Needs.ComfortPercent >=
+            bot.CustomerType.comfortThreshold &&
             bot.Goals.SocialActivities <
             bot.Goals.RequiredSocialActivities &&
             !bot.Blackboard.IsDecisionBlocked(
-                BotDecision.GoToTable
-            )
+                BotDecision.GoToTable)
         )
         {
             return BotDecision.GoToTable;

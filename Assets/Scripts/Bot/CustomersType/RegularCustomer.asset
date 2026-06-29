@@ -12,13 +12,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99eaedbc57538434bb3126e516eb8110, type: 3}
   m_Name: RegularCustomer
   m_EditorClassIdentifier: Assembly-CSharp::CustomerTypeSO
-  requiredDrinks: 2
-  requiredSocialActivities: 2
+  requiredDrinks: 1
+  requiredSocialActivities: 3
+  maxThirst: 100
+  maxComfort: 100
+  maxBladder: 100
   thirst: 30
   comfort: 10
   bladder: 10
+  thirstRate: 1
+  comfortRate: 1
+  bladderRate: 1
+  thirstThreshold: 0.7
+  comfortThreshold: 0.4
+  bladderThreshold: 0.8
   maxPatience: 100
-  patienceRecoveryRate: 2
+  patienceRecoveryRate: 4
   patienceLossRate: 10
   maxHappiness: 100
   moodMultiplier: 1
+  tipMultiplier: 0.25
+  minDrinksPerOrder: 1
+  maxDrinksPerOrder: 2
+  displayName: RegularCustomer
+  drinkPreferences:
+  - drink: 1
+    weight: 30
+  - drink: 2
+    weight: 10
+  - drink: 3
+    weight: 10
+  - drink: 4
+    weight: 50

@@ -1,5 +1,6 @@
-using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Bar : MonoBehaviour
 {
@@ -176,10 +177,6 @@ public class Bar : MonoBehaviour
     public void ReleaseSeat(
         BarSeat seat)
     {
-        seat.client.SetActive(false);
-
-        seat.Occupant.VisualController.ShowBot();
-
-        seat.Occupant = null;
+        seat.Leave();
     }
 }

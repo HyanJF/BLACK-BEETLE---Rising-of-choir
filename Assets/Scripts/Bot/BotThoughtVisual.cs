@@ -1,71 +1,81 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BotThoughtVisual : MonoBehaviour
 {
-    private ThoghtType tType;
+    public SpriteRenderer botSprite;
+    public Animator anim;
 
-    private SpriteRenderer botSprite;
-    private Color colorS;
-    private Animator anim;
     private float timeAnim;
     private string thoughtText;
 
 
-    private void Start()
+    private void Awake()
     {
-        botSprite = GetComponent<SpriteRenderer>();
-        anim = GetComponent<Animator>();
-
         HideSprite();
     }
 
-    public void Anim(ThoghtType thoght, float time)
+    public void Anim(
+    ThoghtType thought,
+    float time)
     {
         timeAnim = time;
-        switch (thoght)
-        {
-            case ThoghtType.Drink:
-                thoughtText = "Bar";
-                StartCoroutine(ThoughtAnim());
-                break;
-            case ThoghtType.Sit:
-                thoughtText = "Table";
-                StartCoroutine(ThoughtAnim());
-                break;
-            case ThoghtType.Bladder:
-                thoughtText = "Bathroom";
-                StartCoroutine(ThoughtAnim());
-                break;
-            case ThoghtType.Angry:
-                thoughtText = "Angry";
-                StartCoroutine(ThoughtAnim());
-                break;
-        }
 
+        thoughtText = thought switch
+        {
+            ThoghtType.Drink => "Bar",
+            ThoghtType.Sit => "Table",
+            ThoghtType.Bladder => "Bathroom",
+            ThoghtType.Angry => "Angry",
+            ThoghtType.Happy => "Happy",
+            _ => "Idle"
+        };
+
+        StopAllCoroutines();
+
+        StartCoroutine(
+            ThoughtAnim()
+        );
     }
 
     IEnumerator ThoughtAnim()
     {
         ShowSprite();
-        anim.Play(thoughtText);
-        yield return new WaitForSeconds(timeAnim);
-        HideSprite();
-        anim.Play("Idle");
 
+        if (anim.gameObject.activeInHierarchy)
+            anim.Play(thoughtText);
+
+        yield return new WaitForSeconds(timeAnim);
+
+        HideSprite();
+
+        if (anim.gameObject.activeInHierarchy)
+            anim.Play("Idle");
     }
 
     public void HideSprite()
     {
-        colorS = botSprite.color;
-        colorS.a = 0f;
-        botSprite.color = colorS;
-    }    
+        Color color = botSprite.color;
+        color.a = 0f;
+        botSprite.color = color;
+    }
 
     public void ShowSprite()
     {
-        colorS.a = 1f;
-        botSprite.color = colorS;
+        Color color = botSprite.color;
+        color.a = 1f;
+        botSprite.color = color;
+    }
+
+    public void DisableThought()
+    {
+        StopAllCoroutines();
+        HideSprite();
+
+        if (anim != null &&
+            anim.gameObject.activeInHierarchy)
+        {
+            anim.Play("Idle");
+        }
     }
 }

@@ -12,13 +12,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99eaedbc57538434bb3126e516eb8110, type: 3}
   m_Name: Impatient
   m_EditorClassIdentifier: Assembly-CSharp::CustomerTypeSO
-  requiredDrinks: 2
+  requiredDrinks: 1
   requiredSocialActivities: 1
+  maxThirst: 70
+  maxComfort: 70
+  maxBladder: 70
   thirst: 50
   comfort: 10
   bladder: 10
+  thirstRate: 3
+  comfortRate: 3
+  bladderRate: 3
+  thirstThreshold: 0.5
+  comfortThreshold: 0.5
+  bladderThreshold: 0.5
   maxPatience: 50
   patienceRecoveryRate: 0.5
   patienceLossRate: 25
   maxHappiness: 100
   moodMultiplier: 2
+  tipMultiplier: 0.1
+  minDrinksPerOrder: 1
+  maxDrinksPerOrder: 1
+  displayName: Impatient
+  drinkPreferences:
+  - drink: 1
+    weight: 25
+  - drink: 2
+    weight: 25
+  - drink: 3
+    weight: 25
+  - drink: 4
+    weight: 25

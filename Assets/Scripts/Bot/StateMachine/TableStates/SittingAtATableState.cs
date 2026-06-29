@@ -19,6 +19,7 @@ public class SittingAtATableState : State
 
         seat.client.SetActive(true);
 
+        bot.Thought.DisableThought();
         bot.VisualController.HideBot();
     }
 

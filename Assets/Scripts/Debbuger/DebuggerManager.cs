@@ -85,8 +85,7 @@ public class DebuggerManager : MonoBehaviour
             Handles.Label(
                 bot.transform.position +
                 Vector3.up * 1.2f,
-                $"{bot.name}\n" +
-                $"{bot.StateMachine.CurrentState.GetType().Name}"
+                bot.DebugInfo
             );
         }
 

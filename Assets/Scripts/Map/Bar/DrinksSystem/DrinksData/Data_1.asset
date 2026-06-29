@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08c6cb5042e415a4b8b3982b45e32fde, type: 3}
+  m_Name: Data_1
+  m_EditorClassIdentifier: Assembly-CSharp::DrinkDatabase
+  drinks:
+  - type: 0
+    icon: {fileID: 6200118337827907677, guid: 3a8e589d06f0ad444830bc732774f5bb, type: 3}
+    price: 0
+    displayName: None
+  - type: 1
+    icon: {fileID: -829340191149905726, guid: 0a22a7e55e253c542b8728274c6ffc6a, type: 3}
+    price: 5
+    displayName: Beer
+  - type: 2
+    icon: {fileID: 3059655478927053224, guid: d937531c204592d4d8ad4af1005bd8b4, type: 3}
+    price: 10
+    displayName: Wine
+  - type: 3
+    icon: {fileID: -5489581757894623092, guid: 00fdc253f6d299e4c868257830de6ad4, type: 3}
+    price: 12
+    displayName: Cocktail
+  - type: 4
+    icon: {fileID: -6356715536312231375, guid: af6fec177b808dc4498e2232a8a40a4c, type: 3}
+    price: 3
+    displayName: Soda

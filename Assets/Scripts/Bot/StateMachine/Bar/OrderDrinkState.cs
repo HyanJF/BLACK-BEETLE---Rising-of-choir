@@ -2,48 +2,47 @@ using UnityEngine;
 
 public class OrderDrinkState : State
 {
-    private float timer;
-    private const float waitTime = 10f;
-
-    public OrderDrinkState(
-        BotController bot)
-        : base(bot)
-    {
-    }
+    public OrderDrinkState(BotController bot)
+        : base(bot) { }
 
     public override void Enter()
     {
-        timer = 0f;
+        BarSeat seat = bot.Blackboard.ReservedBarSeat;
+
+        bot.Thought.DisableThought();
+        bot.VisualController.HideBot();
+
+        seat.ReceiveCustomer(bot);
+
+        seat.Order.OnOrderCompleted += HandleOrderCompleted;
     }
 
-    public override void Update()
-    {
-        timer += Time.deltaTime;
-
-        if (timer >= waitTime)
-        {
-            bot.Needs.thirst = 0f;
-            bot.Needs.bladder += 10f;
-
-            if(bot.Mood.happiness < bot.Mood.maxHappiness)
-            bot.Mood.happiness += 10f;
-
-            bot.Goals.DrinksConsumed++;
-
-            bot.StateMachine.ChangeState(
-                new ThinkState(bot)
-            );
-        }
-    }
+    public override void Update() { }
 
     public override void Exit()
     {
-        if (bot.Blackboard.ReservedBarSeat != null)
-        {
-            WorldBlackboard.Instance.Bar.ReleaseSeat(
-                bot.Blackboard.ReservedBarSeat );
+        BarSeat seat = bot.Blackboard.ReservedBarSeat;
 
+        if (seat != null)
+        {
+            seat.Order.OnOrderCompleted -= HandleOrderCompleted;
+
+            WorldBlackboard.Instance.Bar.ReleaseSeat(seat);
             bot.Blackboard.ReservedBarSeat = null;
         }
+
+        bot.Mood.happiness += 10f;
+        bot.Needs.bladder += 15;
+        bot.Needs.thirst = 0f;
+
+        bot.Goals.DrinksConsumed++;
+
+        bot.VisualController.ShowBot();
+        bot.Thought.Anim(ThoghtType.Happy, 2f);
+    }
+
+    private void HandleOrderCompleted()
+    {
+        bot.StateMachine.ChangeState(new ThinkState(bot));
     }
 }

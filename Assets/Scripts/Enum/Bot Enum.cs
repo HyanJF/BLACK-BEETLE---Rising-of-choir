@@ -41,6 +41,6 @@ public enum ThoghtType
     Bladder,
     Drink,
     Sit,
-    Angry
-
+    Angry,
+    Happy
 }

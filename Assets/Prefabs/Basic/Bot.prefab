@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 4902270264701498102}
   - component: {fileID: 3546267331768435436}
   - component: {fileID: 6253435490854600373}
-  - component: {fileID: 1853160704287028810}
   m_Layer: 6
   m_Name: Thought
   m_TagString: Untagged
@@ -83,15 +82,15 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 51
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -851056328474060674, guid: 339d914c080523a4eb8a4e4c54102dbe, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.32, y: 0.32}
+  m_Size: {x: 0.31, y: 0.32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
 --- !u!95 &6253435490854600373
 Animator:
@@ -115,18 +114,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1853160704287028810
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 120551874205932773}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c0374426ce5bc9418f88770c6ad92ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BotThoughtVisual
 --- !u!1 &5250121301589297365
 GameObject:
   m_ObjectHideFlags: 0
@@ -148,6 +135,7 @@ GameObject:
   - component: {fileID: 4715332067274389682}
   - component: {fileID: 5237303114557272847}
   - component: {fileID: 3582892830007922936}
+  - component: {fileID: 2096265147687146825}
   m_Layer: 6
   m_Name: Bot
   m_TagString: Untagged
@@ -375,7 +363,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a63e6643c8057f4cb773b143edfcd38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BotVisualController
-  thoughtBot: {fileID: 120551874205932773}
+  thought: {fileID: 2096265147687146825}
 --- !u!114 &4715332067274389682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -423,3 +411,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MovementControllerAnimation
   _Speed: 5
+--- !u!114 &2096265147687146825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5250121301589297365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c0374426ce5bc9418f88770c6ad92ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BotThoughtVisual
+  botSprite: {fileID: 3546267331768435436}
+  anim: {fileID: 6253435490854600373}

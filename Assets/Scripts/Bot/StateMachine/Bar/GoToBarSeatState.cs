@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class GoToBarSeatState : State
 {
     public GoToBarSeatState(
@@ -14,7 +16,7 @@ public class GoToBarSeatState : State
         bot.Navigation.NavigateTo(
             bot.Blackboard
                 .ReservedBarSeat
-                .location
+                .Location
                 .position
         );
     }
@@ -27,15 +29,10 @@ public class GoToBarSeatState : State
 
     private void OnDestinationReached()
     {
-        BarSeat seat =
-            bot.Blackboard.ReservedBarSeat;
-
-        seat.client.SetActive(true);
-
-        bot.VisualController.HideBot();
-
         bot.transform.position =
-            seat.location.position;
+            bot.Blackboard
+                .ReservedBarSeat
+                .Location.position;
 
         bot.StateMachine.ChangeState(
             new OrderDrinkState(bot)

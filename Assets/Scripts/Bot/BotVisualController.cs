@@ -4,9 +4,11 @@ public class BotVisualController : MonoBehaviour
 {
     private SpriteRenderer botSprite;
     private Collider2D botCollider;
-    public GameObject thoughtBot;
 
-    private void Start()
+    [SerializeField]
+    private BotThoughtVisual thought;
+
+    private void Awake()
     {
         botSprite = GetComponent<SpriteRenderer>();
         botCollider = GetComponent<Collider2D>();
@@ -16,14 +18,19 @@ public class BotVisualController : MonoBehaviour
     {
         botSprite.enabled = false;
         botCollider.enabled = false;
-        thoughtBot.SetActive(false);
     }
 
     public void ShowBot()
     {
         botSprite.enabled = true;
         botCollider.enabled = true;
-        thoughtBot.SetActive(true);
     }
 
+    public void HideEverything()
+    {
+        HideBot();
+
+        if (thought != null)
+            thought.DisableThought();
+    }
 }

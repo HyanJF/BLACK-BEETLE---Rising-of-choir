@@ -73,9 +73,11 @@ public class BotSpawner : MonoBehaviour
     }
 
     private void ReturnBot(
-        BotController bot)
+    BotController bot)
     {
         activeBots.Remove(bot);
+
+        bot.VisualController.HideEverything();
 
         bot.DeactivateBot();
 
