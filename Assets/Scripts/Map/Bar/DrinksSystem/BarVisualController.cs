@@ -8,6 +8,7 @@ public class BarVisualController : MonoBehaviour
 
     [Header("Order Visual")]
     [SerializeField] private GameObject order;
+    [SerializeField] private GameObject input;
     [SerializeField] private SpriteRenderer drinkSprite;
     [SerializeField] private Animator drinkAnimator;
 
@@ -47,6 +48,15 @@ public class BarVisualController : MonoBehaviour
     public void SetFocused(bool value)
     {
         focused = value;
+
+        if (client.activeSelf == true && focused == true)
+        {
+            input.SetActive(true);
+        } 
+        else
+        {
+            input.SetActive(false);
+        }
 
         if (clientSprite != null)
         {
