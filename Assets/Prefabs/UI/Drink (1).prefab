@@ -91,8 +91,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::InventorySlotUI
   icon: {fileID: 337405904264599866}
   background: {fileID: 5374275266372783602}
-  normalColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  emptyColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   selectedColor: {r: 1, g: 1, b: 1, a: 1}
+  lockedColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!1 &4875581770104070291
 GameObject:
   m_ObjectHideFlags: 0

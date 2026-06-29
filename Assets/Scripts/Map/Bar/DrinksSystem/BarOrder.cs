@@ -24,8 +24,6 @@ public class BarOrder : MonoBehaviour
                 bot.CustomerType.GetRandomDrink());
         }
 
-        Debug.Log($"{bot.name} pidió: {string.Join(", ", drinks)}");
-
         UpdateVisual();
     }
 
@@ -56,7 +54,6 @@ public class BarOrder : MonoBehaviour
 
         if (IsCompleted)
         {
-            Debug.Log("Pedido completado");
             OnOrderCompleted?.Invoke();
         }
     }

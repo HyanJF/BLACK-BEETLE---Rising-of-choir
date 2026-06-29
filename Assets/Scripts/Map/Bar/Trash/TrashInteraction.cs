@@ -5,6 +5,7 @@ public class TrashInteraction :
     IInteractable
 {
     public GameObject iconTrash;
+    public GameObject inputTrash;
 
     [SerializeField]
     private bool playerInside;
@@ -15,6 +16,7 @@ public class TrashInteraction :
     private void Awake()
     {
         iconTrash.SetActive(false);
+        inputTrash.SetActive(false);
     }
 
     private void OnTriggerEnter2D(
@@ -23,6 +25,8 @@ public class TrashInteraction :
         if (collision.CompareTag("Player"))
             playerInside = true;
             iconTrash.SetActive(true);
+            inputTrash.SetActive(true);
+
     }
 
     private void OnTriggerExit2D(
@@ -31,6 +35,7 @@ public class TrashInteraction :
         if (collision.CompareTag("Player"))
             playerInside = false;
             iconTrash?.SetActive(false);
+            inputTrash?.SetActive(false);
     }
 
     public void Interact(PlayerManager player)
@@ -40,7 +45,6 @@ public class TrashInteraction :
 
         if (!player.Inventory.RemoveRandomDrink())
         {
-            Debug.Log("No tienes bebidas.");
             return;
         }
     }

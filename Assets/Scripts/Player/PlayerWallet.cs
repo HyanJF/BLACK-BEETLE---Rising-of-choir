@@ -17,8 +17,6 @@ public class PlayerWallet : MonoBehaviour
     {
         Money += amount;
 
-        Debug.Log($"AddMoney {amount}");
-
         OnMoneyChanged?.Invoke();
         OnMoneyAdded?.Invoke(amount);
     }

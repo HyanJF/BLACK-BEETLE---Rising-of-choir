@@ -35,14 +35,12 @@ public class BarStock : MonoBehaviour
     {
         if (drink == DrinkType.None)
         {
-            Debug.LogWarning("Stock sin bebida asignada");
             return;
         }
 
 
         if (!player.Inventory.AddDrink(drink))
         {
-            Debug.Log("Inventario lleno");
             return;
         }
     }
