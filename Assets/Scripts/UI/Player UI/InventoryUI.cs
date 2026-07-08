@@ -32,7 +32,7 @@ public class InventoryUI : MonoBehaviour
             if (index < inventory.Count)
             {
                 slots[index].SetDrink(
-                    GameDataBase.instance.drinkData.GetSprite(inventory.Drinks[index]));
+                    GameDataBase.Instance.drinkData.GetSprite(inventory.Drinks[index]));
 
                 slots[index].SetSelected(index == inventory.SelectedIndex);
             }

@@ -2,79 +2,109 @@ using UnityEngine;
 
 public class BarSeat : MonoBehaviour
 {
+    #region Seat
+
     [Header("Seat")]
-    public BotController Occupant;
 
-    [SerializeField] private Transform exit;
-    public Transform Exit => exit;
+    [SerializeField]
+    private Transform exitPoint;
 
-    public Transform Location { get; private set; }
+    public Transform ExitPoint =>
+        exitPoint;
 
-    public bool IsOccupied => Occupant != null;
+    public Transform Location =>
+        transform;
 
-    public BarOrder Order { get; private set; }
-    public BarInteraction Interaction { get; private set; }
-    public BarVisualController Visuals { get; private set; }
+    #endregion
 
-    private void Awake()
+    #region Component
+
+    public BarSeatController Controller
     {
-        Location = transform;
-
-        Order = GetComponent<BarOrder>();
-        Visuals = GetComponent<BarVisualController>();
-        Interaction = GetComponentInChildren<BarInteraction>();
-
-        Interaction.Initialize(this);
+        get;
+        private set;
     }
 
-    public void ReceiveCustomer(BotController bot)
+    public BarVisualSeat VisualsSeat
     {
-        Occupant = bot;
-
-        Visuals.Show();
-
-        int drinks =
-            Random.Range(
-                bot.MinDrinksPerOrder,
-                bot.MaxDrinksPerOrder + 1
-            );
-
-        Order.CreateOrder(bot, drinks);
+        get; 
+        private set;
     }
 
-    public void Leave()
+    public BarOrder Order
     {
-        Order.ClearOrder();
-        Visuals.Hide();
-        Occupant = null;
+        get;
+        private set;
     }
 
-    public void Interact(PlayerManager player)
+    public BarThoughtVisual Thought
     {
-        if (!IsOccupied)
+        get;
+        private set;
+    }
+
+
+    #endregion
+
+    #region Availability
+
+    public SeatAvailability Availability
+    {
+        get;
+        private set;
+    } = SeatAvailability.Free;
+
+    public bool IsFree =>
+        Availability == SeatAvailability.Free;
+
+    public bool IsReserved =>
+        Availability == SeatAvailability.Reserved;
+
+    public bool IsOccupied =>
+        Availability == SeatAvailability.Occupied;
+
+    #endregion
+
+    #region Methods
+
+    public void Reserve()
+    {
+        if (!IsFree)
             return;
 
-        DrinkType servedDrink =
-            player.Inventory.CurrentDrink;
-
-        BotController customer = Occupant;
-
-        if (Order.ServeDrink(servedDrink))
-        {
-            player.Inventory.ConsumeCurrentDrink();
-
-            player.Wallet.ReceiveDrinkPayment(
-                servedDrink,
-                customer);
-        }
-        else
-        {
-            Debug.Log("Pedido incorrecto");
-        }
+        Availability =
+            SeatAvailability.Reserved;
     }
 
-    public void SetFocused(bool value)
+    public void Occupy()
     {
-        Visuals.SetFocused(value);
+        if (!IsReserved)
+            return;
+
+        Availability =
+            SeatAvailability.Occupied;
+    }
+
+    public void Free()
+    {
+        Availability =
+            SeatAvailability.Free;
+    }
+
+    #endregion
+
+    public void Awake()
+    {
+        VisualsSeat =
+            GetComponent<BarVisualSeat>();
+
+        Controller =
+            GetComponent<BarSeatController>();
+
+        Order = 
+            GetComponent<BarOrder>();
+
+        Thought =
+            GetComponent<BarThoughtVisual>();
     }
 }

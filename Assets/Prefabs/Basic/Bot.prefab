@@ -208,7 +208,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 50
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 4723107735738678597, guid: 8084de89731306841921b6ea2bdb2d49, type: 3}
+  m_Sprite: {fileID: -3179086527763344619, guid: 9e4d050b34000334a986e5465df00a6e, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -302,7 +302,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.09
+  m_Radius: 0.075
 --- !u!114 &3024825141400834938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -377,8 +377,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BotMood
   maxHappiness: 0
-  happiness: 0
+  maxTolerance: 0
   moodMultiplier: 2
+  tipMultiplier: 1
 --- !u!114 &5237303114557272847
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -394,6 +395,12 @@ MonoBehaviour:
   thirst: 0
   comfort: 0
   bladder: 0
+  maxThirst: 100
+  maxComfort: 100
+  maxBladder: 100
+  thirstRate: 2
+  comfortRate: 1
+  bladderRate: 0.5
   maxPatience: 0
   currentPatience: 0
   patienceRecoveryRate: 0

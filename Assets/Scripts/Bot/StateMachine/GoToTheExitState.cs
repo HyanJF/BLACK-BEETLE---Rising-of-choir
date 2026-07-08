@@ -23,12 +23,12 @@ public class GoToTheExitState : State
             bot.Blackboard.TargetPlace.position
         );
 
-        if(bot.Mood.happiness > 75)
+        if(bot.Mood.Happiness > 75)
         {
             bot.Thought.Anim(ThoghtType.Happy, 2f);
         }
 
-        if(bot.Mood.happiness < 25)
+        if(bot.Mood.Happiness < 25)
         {
             bot.Thought.Anim(ThoghtType.Angry, 2f);
         }

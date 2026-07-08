@@ -4,21 +4,23 @@ public class BarStockVisualController : MonoBehaviour
 {
     [SerializeField]
     private SpriteRenderer sprite;
+
     [SerializeField]
-    private GameObject input;
+    private Color normalColor = Color.white;
+
+    [SerializeField]
+    private Color focusedColor = Color.green;
 
     private void Awake()
     {
         SetFocused(false);
     }
 
-    public void SetFocused(bool value)
+    public void SetFocused(bool focused)
     {
         sprite.color =
-            value ?
-            Color.green :
-            Color.white;
-
-        input.SetActive(value);
+            focused
+            ? focusedColor
+            : normalColor;
     }
 }

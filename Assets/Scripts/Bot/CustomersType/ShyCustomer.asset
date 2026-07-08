@@ -30,8 +30,11 @@ MonoBehaviour:
   patienceRecoveryRate: 2
   patienceLossRate: 10
   maxHappiness: 70
+  angryThreshold: 0.5
+  joyThreshold: 0.75
   moodMultiplier: 1
   tipMultiplier: 0.1
+  maxTolerance: 2
   minDrinksPerOrder: 1
   maxDrinksPerOrder: 2
   displayName: ShyCustomer
@@ -44,3 +47,4 @@ MonoBehaviour:
     weight: 0
   - drink: 4
     weight: 50
+  profile: {fileID: 11400000, guid: 4aa8541d3ce6b8c43a7974e2784471db, type: 2}

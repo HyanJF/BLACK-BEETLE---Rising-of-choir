@@ -2,12 +2,19 @@ using UnityEngine;
 
 public class BarStock : MonoBehaviour
 {
+    [Header("Settings")]
     [SerializeField]
     private DrinkType drink;
 
     public DrinkType Drink => drink;
 
-    public BarStockInteraction Interaction
+    public BarStockController Controller
+    {
+        get;
+        private set;
+    }
+
+    public BarStockInventory Inventory
     {
         get;
         private set;
@@ -21,27 +28,13 @@ public class BarStock : MonoBehaviour
 
     private void Awake()
     {
+        Controller =
+            GetComponent<BarStockController>();
+
+        Inventory =
+            GetComponent<BarStockInventory>();
+
         Visuals =
             GetComponent<BarStockVisualController>();
-
-        Interaction =
-            GetComponent<BarStockInteraction>();
-
-        Interaction.Initialize(this);
-    }
-
-    public void PickupDrink(
-        PlayerManager player)
-    {
-        if (drink == DrinkType.None)
-        {
-            return;
-        }
-
-
-        if (!player.Inventory.AddDrink(drink))
-        {
-            return;
-        }
     }
 }

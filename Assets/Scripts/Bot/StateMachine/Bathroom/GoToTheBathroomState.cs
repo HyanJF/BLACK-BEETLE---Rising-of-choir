@@ -41,9 +41,9 @@ public class GoToTheBathroomState : State
 
         if(bot.Needs.currentPatience <= 10f)
         {
-            bot.Mood.happiness -=
+            bot.Mood.RemoveHappiness(
                 BathroomQueueState.NoBathroomQueuePenalty *
-                bot.Mood.moodMultiplier;
+                bot.Mood.moodMultiplier);
 
             bot.Blackboard.BlockDecision(
                 BotDecision.GoToBathroom,

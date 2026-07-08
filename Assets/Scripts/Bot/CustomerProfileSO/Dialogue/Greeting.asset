@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9eeef22f2cac9642aa674445df5d00b, type: 3}
+  m_Name: Greeting
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueCollectionSO
+  type: 1
+  dialogues:
+  - Hola.
+  - Buenas.
+  - "Buen d\xEDa."
+  - Buenas tardes.
+  - Buenas noches.
+  - Hola, tabernero.
+  - "\xBFQu\xE9 tal?"
+  - "\xBFC\xF3mo va todo?"
+  - Saludos.
+  - Un gusto verte.
+  - "Aqu\xED estoy."
+  - Vengo por una bebida.
+  - "\xBFHay lugar?"
+  - Espero no llegar tarde.
+  - Parece un buen sitio.
+  - "Qu\xE9 ambiente tan agradable."
+  - Espero pasar un buen rato.
+  - Hace sed hoy.
+  - Necesitaba un descanso.
+  - Vengo a relajarme.
+  - "Qu\xE9 calor hace."
+  - "Hace fr\xEDo afuera."
+  - "Menos mal encontr\xE9 esta taberna."
+  - "Qu\xE9 suerte encontrar asiento."
+  - "Al fin llegu\xE9."
+  - Espero que haya buena bebida.
+  - "Veamos qu\xE9 tienen."
+  - Tengo ganas de tomar algo.
+  - "Me hac\xEDa falta salir.\r\n"
+  - Hora de descansar.
+  - "Qu\xE9 lugar tan acogedor."
+  - Espero no molestar.
+  - Buen lugar para pasar el rato.
+  - "Se ve tranquilo aqu\xED."
+  - "Vine por recomendaci\xF3n."
+  - "Escuch\xE9 cosas buenas de este lugar."
+  - Espero que me atiendan pronto.
+  - "Qu\xE9 bien se est\xE1 aqu\xED."
+  - Necesitaba despejarme.
+  - Hora de consentirme un poco.
+  - Vaya, hay bastante gente.
+  - Parece un sitio popular.
+  - Hoy toca disfrutar.
+  - Espero que tengan mi bebida favorita.
+  - "Qu\xE9 gusto sentarse un momento."
+  - "Ha sido un d\xEDa largo."
+  - Al fin un respiro.
+  - Este lugar tiene buena pinta.
+  - Me alegra haber venido.
+  - Necesitaba cambiar de ambiente.
+  - ...

@@ -69,4 +69,46 @@ public class BotNeeds : MonoBehaviour
                 0,
                 maxBladder);
     }
+
+    public void Initialize(CustomerTypeSO type)
+    {
+        thirst =
+            type.thirst;
+
+        comfort =
+            type.comfort;
+
+        bladder =
+            type.bladder;
+
+        maxThirst =
+            type.maxThirst;
+
+        maxComfort =
+            type.maxComfort;
+
+        maxBladder =
+            type.maxBladder;
+
+        thirstRate =
+            type.thirstRate;
+
+        comfortRate =
+            type.comfortRate;
+
+        bladderRate =
+            type.bladderRate;
+
+        maxPatience =
+            type.maxPatience;
+
+        currentPatience =
+            maxPatience;
+
+        patienceRecoveryRate =
+            type.patienceRecoveryRate;
+
+        patienceLossRate =
+            type.patienceLossRate;
+    }
 }

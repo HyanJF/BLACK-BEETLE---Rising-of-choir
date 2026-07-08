@@ -6,16 +6,15 @@ public class BarStockInteraction :
 {
     private BarStock stock;
 
-    [SerializeField]
     private bool playerInside;
 
     public bool CanInteract =>
         playerInside;
 
-    public void Initialize(
-        BarStock owner)
+    private void Awake()
     {
-        stock = owner;
+        stock =
+            GetComponent<BarStock>();
     }
 
     private void OnTriggerEnter2D(
@@ -26,7 +25,7 @@ public class BarStockInteraction :
 
         playerInside = true;
 
-        stock.Visuals.SetFocused(true);
+        stock.Controller.PlayerEntered();
     }
 
     private void OnTriggerExit2D(
@@ -37,7 +36,7 @@ public class BarStockInteraction :
 
         playerInside = false;
 
-        stock.Visuals.SetFocused(false);
+        stock.Controller.PlayerExited();
     }
 
     public void Interact(
@@ -46,6 +45,6 @@ public class BarStockInteraction :
         if (!CanInteract)
             return;
 
-        stock.PickupDrink(player);
+        stock.Controller.Interact(player);
     }
 }

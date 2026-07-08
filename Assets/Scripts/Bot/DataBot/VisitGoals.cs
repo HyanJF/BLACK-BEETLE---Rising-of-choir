@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 
 public class VisitGoals
@@ -11,4 +12,13 @@ public class VisitGoals
     public bool VisitCompleted =>
         DrinksConsumed >= RequiredDrinks &&
         SocialActivities >= RequiredSocialActivities;
+
+    public void Initialize(CustomerTypeSO type)
+    {
+        RequiredDrinks =
+            type.requiredDrinks;
+
+        RequiredSocialActivities =
+            type.requiredSocialActivities;
+    }
 }

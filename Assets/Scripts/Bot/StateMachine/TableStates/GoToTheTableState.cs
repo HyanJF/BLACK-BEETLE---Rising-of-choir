@@ -26,9 +26,9 @@ public class GoToTheTable : State
 
         if (!foundSeat)
         {
-            bot.Mood.happiness -=
+            bot.Mood.RemoveHappiness(
                 NoTablePenalty *
-                bot.Mood.moodMultiplier;
+                bot.Mood.moodMultiplier);
 
             bot.Blackboard.BlockDecision(
                 BotDecision.GoToTable, 

@@ -30,10 +30,13 @@ MonoBehaviour:
   patienceRecoveryRate: 1
   patienceLossRate: 20
   maxHappiness: 70
+  angryThreshold: 0.8
+  joyThreshold: 0.95
   moodMultiplier: 3
   tipMultiplier: 1.25
+  maxTolerance: 1
   minDrinksPerOrder: 3
-  maxDrinksPerOrder: 6
+  maxDrinksPerOrder: 5
   displayName: VIP
   drinkPreferences:
   - drink: 1
@@ -44,3 +47,4 @@ MonoBehaviour:
     weight: 40
   - drink: 4
     weight: 0
+  profile: {fileID: 11400000, guid: 4aa8541d3ce6b8c43a7974e2784471db, type: 2}

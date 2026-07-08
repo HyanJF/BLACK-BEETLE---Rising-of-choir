@@ -35,7 +35,7 @@ public class InTheBathroomState : State
                 .Bathroom
                 .LeaveBathroom ();
 
-            bot.Mood.happiness += 5f;
+            bot.Mood.AddHappiness(5f);
             bot.Needs.bladder = 0f;
 
             bot.StateMachine.ChangeState(

@@ -1,77 +1,78 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class BarOrder : MonoBehaviour
 {
-    public System.Action OnOrderCompleted;
-
-    [SerializeField] private BarVisualController visuals;
+    public Action OnOrderCompleted;
+    public Action OnOrderUpdated;
 
     private readonly Queue<DrinkType> drinks = new();
 
-    public bool IsCompleted => drinks.Count == 0;
+    private int totalDrinks;
+
+    public bool IsCompleted =>
+        drinks.Count == 0;
 
     public DrinkType CurrentDrink =>
-        drinks.Count > 0 ? drinks.Peek() : 0;
+        drinks.Count > 0
+        ? drinks.Peek()
+        : DrinkType.None;
 
-    public void CreateOrder(BotController bot, int amount)
+    public int RemainingDrinks =>
+        drinks.Count;
+
+    public int TotalDrinks =>
+        totalDrinks;
+
+    public int ServedDrinks =>
+        totalDrinks - drinks.Count;
+
+    public void CreateOrder(BotController bot)
     {
         drinks.Clear();
 
-        for (int i = 0; i < amount; i++)
+        totalDrinks = UnityEngine.Random.Range(
+            bot.CustomerType.minDrinksPerOrder,
+            bot.CustomerType.maxDrinksPerOrder + 1
+            );
+
+        for (int i = 0; i < totalDrinks; i++)
         {
             drinks.Enqueue(
                 bot.CustomerType.GetRandomDrink());
         }
 
-        UpdateVisual();
+        OnOrderUpdated?.Invoke();
     }
 
-    public bool ServeDrink(DrinkType drink)
+    public ServeResult ServeDrink(DrinkType drink)
     {
-        if (IsCompleted)
-            return false;
+        if (drink == DrinkType.None)
+            return ServeResult.EmptyHands;
 
         if (CurrentDrink != drink)
-            return false;
-
-        CompleteCurrentDrink();
-        return true;
-    }
-
-    public void CompleteCurrentDrink()
-    {
-        if (IsCompleted)
-        {
-            return;
-        }
+            return ServeResult.WrongDrink;
 
         drinks.Dequeue();
 
-        visuals.PlayServeFeedback();
-
-        UpdateVisual();
+        OnOrderUpdated?.Invoke();
 
         if (IsCompleted)
         {
             OnOrderCompleted?.Invoke();
+            return ServeResult.OrderFinished;
         }
+
+        return ServeResult.Success;
     }
 
     public void ClearOrder()
     {
         drinks.Clear();
-        visuals.HideDrink();
+
+        totalDrinks = 0;
+        OnOrderUpdated?.Invoke();
     }
 
-    private void UpdateVisual()
-    {
-        if (IsCompleted)
-        {
-            visuals.HideDrink();
-            return;
-        }
-
-        visuals.ShowDrink(CurrentDrink);
-    }
 }

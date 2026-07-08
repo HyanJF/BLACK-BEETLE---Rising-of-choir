@@ -3,46 +3,71 @@ using UnityEngine;
 public class OrderDrinkState : State
 {
     public OrderDrinkState(BotController bot)
-        : base(bot) { }
+        : base(bot)
+    {
+    }
 
     public override void Enter()
     {
-        BarSeat seat = bot.Blackboard.ReservedBarSeat;
+        BarSeat seat =
+            bot.Blackboard.ReservedBarSeat;
+
+        if (seat == null)
+            return;
 
         bot.Thought.DisableThought();
         bot.VisualController.HideBot();
 
-        seat.ReceiveCustomer(bot);
+        seat.Controller.OnCustomerFinished +=
+            HandleSessionFinished;
 
-        seat.Order.OnOrderCompleted += HandleOrderCompleted;
+        seat.Controller.ReceiveCustomer(bot);
     }
-
-    public override void Update() { }
 
     public override void Exit()
     {
-        BarSeat seat = bot.Blackboard.ReservedBarSeat;
+        BarSeat seat =
+            bot.Blackboard.ReservedBarSeat;
 
         if (seat != null)
         {
-            seat.Order.OnOrderCompleted -= HandleOrderCompleted;
-
-            WorldBlackboard.Instance.Bar.ReleaseSeat(seat);
-            bot.Blackboard.ReservedBarSeat = null;
+            seat.Controller.OnCustomerFinished -=
+                HandleSessionFinished;
         }
 
-        bot.Mood.happiness += 10f;
-        bot.Needs.bladder += 15;
-        bot.Needs.thirst = 0f;
-
-        bot.Goals.DrinksConsumed++;
-
         bot.VisualController.ShowBot();
-        bot.Thought.Anim(ThoghtType.Happy, 2f);
+
+        if (bot.Mood.Happiness <= bot.Mood.AngryLimit || 
+            bot.Mood.Tolerance == 0)
+        {
+            bot.Thought.Anim(
+                ThoghtType.Angry,
+                2f);
+        }
+        else
+        {
+            bot.Thought.Anim(
+                ThoghtType.Happy,
+                2f);
+        }
+
+        bot.Mood.SetTolerance(bot.Mood.maxTolerance);
     }
 
-    private void HandleOrderCompleted()
+    private void HandleSessionFinished()
     {
-        bot.StateMachine.ChangeState(new ThinkState(bot));
+        BarSeat seat =
+            bot.Blackboard.ReservedBarSeat;
+
+        if (seat != null)
+        {
+            seat.Controller.OnCustomerFinished -=
+                HandleSessionFinished;
+        }
+
+        bot.Blackboard.ReservedBarSeat = null;
+
+        bot.StateMachine.ChangeState(
+            new LeaveBarState(bot));
     }
 }

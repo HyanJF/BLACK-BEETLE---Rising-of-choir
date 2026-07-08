@@ -16,7 +16,7 @@ public class WaitForBarSeatState : State
         if (bar.HasFreeSeat)
         {
             bot.Blackboard.ReservedBarSeat =
-                bar.ReserveSeat(bot);
+                bar.ReserveSeat();
 
             bot.StateMachine.ChangeState(
                 new GoToBarSeatState(bot)

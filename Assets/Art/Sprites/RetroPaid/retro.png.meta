@@ -914,10 +914,10 @@ TextureImporter:
       name: retro_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 403
-        width: 79
-        height: 26
+        x: 1
+        y: 404
+        width: 77
+        height: 24
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2190,10 +2190,10 @@ TextureImporter:
       name: retro_58
       rect:
         serializedVersion: 2
-        x: 3
-        y: 239
-        width: 89
-        height: 114
+        x: 6
+        y: 240
+        width: 85
+        height: 112
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3026,10 +3026,10 @@ TextureImporter:
       name: retro_96
       rect:
         serializedVersion: 2
-        x: 416
-        y: 256
-        width: 94
-        height: 48
+        x: 417
+        y: 259
+        width: 90
+        height: 44
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3224,10 +3224,10 @@ TextureImporter:
       name: retro_105
       rect:
         serializedVersion: 2
-        x: 273
-        y: 226
-        width: 45
-        height: 43
+        x: 277
+        y: 228
+        width: 39
+        height: 39
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3246,10 +3246,10 @@ TextureImporter:
       name: retro_106
       rect:
         serializedVersion: 2
-        x: 325
-        y: 228
-        width: 42
-        height: 43
+        x: 326
+        y: 229
+        width: 39
+        height: 40
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

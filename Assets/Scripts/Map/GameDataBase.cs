@@ -2,12 +2,17 @@ using UnityEngine;
 
 public class GameDataBase : MonoBehaviour
 {
-    public static GameDataBase instance;
+    public static GameDataBase Instance;
 
     public DrinkDatabase drinkData;
 
+    [Header("UI Systems")]
+    public BarStockUIManager stockUI;
+    public BarCustomerUI customerUI;
+    public ActionUI actionUI;
+    public DialogueUI dialogueUI;
     private void Awake()
     {
-        instance = this;
+        Instance = this;
     }
 }

@@ -30,7 +30,8 @@ Transform:
   m_LocalPosition: {x: 14, y: 21.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 3878561588823255184}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2757845407100010740
@@ -83,7 +84,7 @@ SpriteRenderer:
   m_SortingOrder: 2
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.4339623, g: 0, b: 0.34998953, a: 0.5372549}
+  m_Color: {r: 0.4339623, g: 0, b: 0.34998953, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -128,3 +129,67 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.2
+--- !u!1 &6769398377345937676
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3878561588823255184}
+  - component: {fileID: 9022628561262119268}
+  m_Layer: 0
+  m_Name: SpawnBots
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3878561588823255184
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6769398377345937676}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -5.01647, y: 6.4706, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1920884261792981692}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9022628561262119268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6769398377345937676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d05b91b8fa95e4498f205bb8256f76a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BotSpawner
+  botPrefab: {fileID: 3024825141400834938, guid: ac2c6c3b8f87ff248833d55aa4e37438, type: 3}
+  spawnPoint: {fileID: 0}
+  customerPool:
+  - customerType: {fileID: 11400000, guid: 93a604ec9448b14488e2eb469c81bbb2, type: 2}
+    weight: 65
+  - customerType: {fileID: 11400000, guid: 053a38357c9da3a458c272a006fff9de, type: 2}
+    weight: 8
+  - customerType: {fileID: 11400000, guid: 7ea274b052246f54692b39d89e2d49e1, type: 2}
+    weight: 7
+  - customerType: {fileID: 11400000, guid: 60741bb4e29c82b46abc0d4d42da3588, type: 2}
+    weight: 5
+  - customerType: {fileID: 11400000, guid: bea093d8c1fc1a64589cf0f1dc5dfadc, type: 2}
+    weight: 5
+  - customerType: {fileID: 11400000, guid: c10c6a67a01108d48b91215925319d9c, type: 2}
+    weight: 5
+  - customerType: {fileID: 11400000, guid: d4b062b40190e3a4486efa4df2aa7169, type: 2}
+    weight: 5
+  spawnInterval: 2
+  maxCustomers: 5
+  activeBots: []

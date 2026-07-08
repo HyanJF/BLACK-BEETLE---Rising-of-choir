@@ -15,9 +15,9 @@ public class BathroomQueueState : State
 
         if (!bathroom.JoinQueue(bot))
         {
-            bot.Mood.happiness -=
+            bot.Mood.RemoveHappiness(
                 NoBathroomQueuePenalty *
-                bot.Mood.moodMultiplier;
+                bot.Mood.moodMultiplier);
 
             bot.Blackboard.BlockDecision(
                 BotDecision.GoToBathroom,
@@ -49,9 +49,9 @@ public class BathroomQueueState : State
         {
             bathroom.RemoveFromQueue(bot);
 
-            bot.Mood.happiness -=
+            bot.Mood.RemoveHappiness(
                 NoBathroomQueuePenalty *
-                bot.Mood.moodMultiplier;
+                bot.Mood.moodMultiplier);
 
             bot.Blackboard.BlockDecision(
                 BotDecision.GoToBathroom,

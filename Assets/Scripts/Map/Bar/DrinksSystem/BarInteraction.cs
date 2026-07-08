@@ -1,61 +1,57 @@
 using UnityEngine;
 
-public class BarInteraction :
-    MonoBehaviour,
-    IInteractable
+public class BarInteraction : MonoBehaviour, IInteractable
 {
+    #region References
+
+    [SerializeField]
     private BarSeat seat;
 
     [SerializeField]
     private bool playerInside;
 
     public bool CanInteract =>
-        playerInside &&
-        seat != null &&
-        seat.IsOccupied;
+        playerInside;
 
-    public void Initialize(
-        BarSeat owner)
-    {
-        seat = owner;
-    }
+    #endregion
 
-    private void OnTriggerEnter2D(
-        Collider2D collision)
+    #region Trigger
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (!collision.CompareTag("Player"))
             return;
 
         playerInside = true;
 
-        seat.Visuals.SetFocused(true);
+        seat.VisualsSeat?.SetFocused(true);
+
+        seat.Controller.PlayerEnteredRange();
     }
 
-    private void OnTriggerExit2D(
-        Collider2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
         if (!collision.CompareTag("Player"))
             return;
 
         playerInside = false;
 
-        seat.Visuals.SetFocused(false);
+        seat.VisualsSeat?.SetFocused(false);
+
+        seat.Controller.PlayerExitedRange();
     }
 
-    public void Interact(
-        PlayerManager player)
+    #endregion
+
+    #region Interaction
+
+    public void Interact(PlayerManager player)
     {
-        if (!CanInteract)
+        if (!playerInside)
             return;
 
-        seat.Interact(player);
+        seat.Controller.OnPlayerInteract(player);
     }
 
-    public void ResetInteraction()
-    {
-        playerInside = false;
-
-        if (seat != null)
-            seat.Visuals.SetFocused(false);
-    }
+    #endregion
 }

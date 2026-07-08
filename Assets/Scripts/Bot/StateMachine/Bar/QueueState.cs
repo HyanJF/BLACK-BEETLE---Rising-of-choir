@@ -17,9 +17,9 @@ public class QueueState : State
 
         if (!bar.JoinQueue(bot))
         {
-            bot.Mood.happiness -=
+            bot.Mood.RemoveHappiness(
                 NoBarSeatPenalty *
-                bot.Mood.moodMultiplier;
+                bot.Mood.moodMultiplier);
 
             bot.Blackboard.BlockDecision(
                 BotDecision.GoToBar,
@@ -65,9 +65,9 @@ public class QueueState : State
         {
             bar.RemoveFromQueue(bot);
 
-            bot.Mood.happiness -=
+            bot.Mood.RemoveHappiness(
                 NoBarSeatPenalty *
-                bot.Mood.moodMultiplier;
+                bot.Mood.moodMultiplier);
 
             bot.Blackboard.BlockDecision(
                 BotDecision.GoToBar,
@@ -89,7 +89,7 @@ public class QueueState : State
             bar.RemoveFromQueue(bot);
 
             bot.Blackboard.ReservedBarSeat =
-                bar.ReserveSeat(bot);
+                bar.ReserveSeat();
 
             bot.StateMachine.ChangeState(
                 new GoToBarSeatState(bot)

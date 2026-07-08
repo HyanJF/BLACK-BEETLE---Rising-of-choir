@@ -30,8 +30,11 @@ MonoBehaviour:
   patienceRecoveryRate: 0.5
   patienceLossRate: 25
   maxHappiness: 100
+  angryThreshold: 0.5
+  joyThreshold: 0.9
   moodMultiplier: 2
   tipMultiplier: 0.1
+  maxTolerance: 1
   minDrinksPerOrder: 1
   maxDrinksPerOrder: 1
   displayName: Impatient
@@ -44,3 +47,4 @@ MonoBehaviour:
     weight: 25
   - drink: 4
     weight: 25
+  profile: {fileID: 11400000, guid: 4aa8541d3ce6b8c43a7974e2784471db, type: 2}

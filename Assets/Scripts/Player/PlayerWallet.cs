@@ -29,17 +29,27 @@ public class PlayerWallet : MonoBehaviour
         OnMoneySpent?.Invoke(amount);
     }
 
+    public bool TrySpendMoney(float amount)
+    {
+        if (Money < amount)
+            return false;
+
+        SpendMoney(amount);
+
+        return true;
+    }
+
     public void ReceiveDrinkPayment(
     DrinkType drink,
     BotController bot)
     {
         float basePrice =
-            GameDataBase.instance
+            GameDataBase.Instance
             .drinkData
             .GetPrice(drink);
 
         float happiness =
-            bot.Mood.happiness /
+            bot.Mood.Happiness /
             bot.Mood.maxHappiness;
 
         float maxTipPercent =

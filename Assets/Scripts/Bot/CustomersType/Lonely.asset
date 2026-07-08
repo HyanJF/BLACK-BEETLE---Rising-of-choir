@@ -30,10 +30,13 @@ MonoBehaviour:
   patienceRecoveryRate: 4
   patienceLossRate: 6
   maxHappiness: 70
+  angryThreshold: 0.3
+  joyThreshold: 0.5
   moodMultiplier: 0.7
   tipMultiplier: 0.05
+  maxTolerance: 2
   minDrinksPerOrder: 1
-  maxDrinksPerOrder: 2
+  maxDrinksPerOrder: 1
   displayName: Lonely
   drinkPreferences:
   - drink: 1
@@ -44,3 +47,4 @@ MonoBehaviour:
     weight: 15
   - drink: 4
     weight: 50
+  profile: {fileID: 11400000, guid: 4aa8541d3ce6b8c43a7974e2784471db, type: 2}

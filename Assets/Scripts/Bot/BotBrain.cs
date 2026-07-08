@@ -1,5 +1,3 @@
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
 
 public class BotBrain : MonoBehaviour
@@ -32,6 +30,10 @@ public class BotBrain : MonoBehaviour
 
         if (bot.Goals.VisitCompleted)
         {
+            if (IsHappy)
+            {
+            }
+
             return BotDecision.Exit;
         }
 
@@ -72,10 +74,10 @@ public class BotBrain : MonoBehaviour
         return BotDecision.Wander;
     }
 
-    public bool IsSatisfied =>
+    public bool IsHappy =>
         bot.Goals.VisitCompleted &&
-        bot.Mood.happiness >= 75f;
+        bot.Mood.Happiness >= bot.Mood.JoyLimit;
 
     public bool IsUnHappy =>
-        bot.Mood.happiness <= 10;
+        bot.Mood.Happiness <= bot.Mood.AngryLimit;
 }

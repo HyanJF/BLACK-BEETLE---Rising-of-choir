@@ -30,10 +30,13 @@ MonoBehaviour:
   patienceRecoveryRate: 1
   patienceLossRate: 12
   maxHappiness: 100
+  angryThreshold: 0.1
+  joyThreshold: 0.8
   moodMultiplier: 1.2
   tipMultiplier: 0.5
+  maxTolerance: 4
   minDrinksPerOrder: 2
-  maxDrinksPerOrder: 7
+  maxDrinksPerOrder: 4
   displayName: HeavyDrinker
   drinkPreferences:
   - drink: 1
@@ -44,3 +47,4 @@ MonoBehaviour:
     weight: 15
   - drink: 4
     weight: 0
+  profile: {fileID: 11400000, guid: 4aa8541d3ce6b8c43a7974e2784471db, type: 2}

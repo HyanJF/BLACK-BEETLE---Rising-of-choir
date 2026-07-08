@@ -1,24 +1,31 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class Bar : MonoBehaviour
 {
+    #region Inspector
+
+    [Header("Bar")]
     public Transform location;
 
-    [Header("Bar Seats")]
-    public List<BarSeat> seats =
-        new();
+    [Header("Seats")]
+    public List<BarSeat> seats = new();
 
     [Header("Queue")]
-    public List<Transform> QueuePoints =
-        new();
+    public List<Transform> QueuePoints = new();
 
-    private readonly List<BotController> queue =
-        new();
+    #endregion
 
-    public bool JoinQueue(
-        BotController bot)
+    #region Runtime
+
+    private readonly List<BotController> queue = new();
+
+    #endregion
+
+    #region Queue
+
+    // Agregar un bot en la fila.
+    public bool JoinQueue(BotController bot)
     {
         CleanInvalidBots();
 
@@ -35,8 +42,8 @@ public class Bar : MonoBehaviour
         return true;
     }
 
-    public bool IsFirstInQueue(
-        BotController bot)
+    // Devuelve true si el bot es el primero de la fila.
+    public bool IsFirstInQueue(BotController bot)
     {
         CleanInvalidBots();
 
@@ -46,8 +53,8 @@ public class Bar : MonoBehaviour
         return queue[0] == bot;
     }
 
-    public void RemoveFromQueue(
-        BotController bot)
+    // Elimina un bot de la fila.
+    public void RemoveFromQueue(BotController bot)
     {
         if (!queue.Contains(bot))
             return;
@@ -57,38 +64,30 @@ public class Bar : MonoBehaviour
         UpdateQueuePositions();
     }
 
-    public Transform GetQueuePoint(
-        BotController bot)
+    // Devuelve el punto de espera correspondiente al bot.
+    public Transform GetQueuePoint(BotController bot)
     {
-        int index =
-            queue.IndexOf(bot);
+        int index = queue.IndexOf(bot);
 
-        if (
-            index < 0 ||
-            index >= QueuePoints.Count
-        )
-        {
+        if (index < 0 || index >= QueuePoints.Count)
             return null;
-        }
 
         return QueuePoints[index];
     }
 
+    #endregion
+
+    #region Queue Utilities
+
+    // Elimina bots inválidos o que ya abandonaron la cola.
     private void CleanInvalidBots()
     {
         bool changed = false;
 
-        for (
-            int i = queue.Count - 1;
-            i >= 0;
-            i--
-        )
+        for (int i = queue.Count - 1; i >= 0; i--)
         {
-            if (
-                queue[i] == null ||
-                queue[i].StateMachine.CurrentState
-                    is not QueueState
-            )
+            if (queue[i] == null ||
+                queue[i].StateMachine.CurrentState is not QueueState)
             {
                 queue.RemoveAt(i);
                 changed = true;
@@ -96,47 +95,15 @@ public class Bar : MonoBehaviour
         }
 
         if (changed)
-        {
             UpdateQueuePositions();
-        }
     }
 
-    private void UpdateQueuePositions()
-    {
-        CleanQueueDuplicates();
-
-        for (
-            int i = 0;
-            i < queue.Count &&
-            i < QueuePoints.Count;
-            i++
-        )
-        {
-            BotController bot =
-                queue[i];
-
-            if (
-                bot.StateMachine.CurrentState
-                    is QueueState
-            )
-            {
-                bot.Navigation.NavigateTo(
-                    QueuePoints[i].position
-                );
-            }
-        }
-    }
-
+    // Evita que un bot aparezca dos veces en la fila.
     private void CleanQueueDuplicates()
     {
-        HashSet<BotController> seen =
-            new();
+        HashSet<BotController> seen = new();
 
-        for (
-            int i = queue.Count - 1;
-            i >= 0;
-            i--
-        )
+        for (int i = queue.Count - 1; i >= 0; i--)
         {
             if (!seen.Add(queue[i]))
             {
@@ -145,13 +112,33 @@ public class Bar : MonoBehaviour
         }
     }
 
+    // Recalcula las posiciones físicas de toda la fila.
+    private void UpdateQueuePositions()
+    {
+        CleanQueueDuplicates();
+
+        for (int i = 0; i < queue.Count && i < QueuePoints.Count; i++)
+        {
+            BotController bot = queue[i];
+
+            if (bot.StateMachine.CurrentState is QueueState)
+            {
+                bot.Navigation.NavigateTo(
+                    QueuePoints[i].position);
+            }
+        }
+    }
+
+    #endregion
+
+    #region Seat Reservation
     public bool HasFreeSeat
     {
         get
         {
             foreach (BarSeat seat in seats)
             {
-                if (!seat.IsOccupied)
+                if (seat.IsFree)
                     return true;
             }
 
@@ -159,14 +146,14 @@ public class Bar : MonoBehaviour
         }
     }
 
-    public BarSeat ReserveSeat(
-        BotController bot)
+    // Reserva el primer asiento libre.
+    public BarSeat ReserveSeat()
     {
         foreach (BarSeat seat in seats)
         {
-            if (!seat.IsOccupied)
+            if (seat.IsFree)
             {
-                seat.Occupant = bot;
+                seat.Reserve();
                 return seat;
             }
         }
@@ -174,9 +161,14 @@ public class Bar : MonoBehaviour
         return null;
     }
 
-    public void ReleaseSeat(
-        BarSeat seat)
+    // Libera un asiento para que pueda volver a reservarse.
+    public void ReleaseSeat(BarSeat seat)
     {
-        seat.Leave();
+        if (seat == null)
+            return;
+
+        seat.Free();
     }
+
+    #endregion
 }

@@ -43,8 +43,16 @@ public class CustomerTypeSO : ScriptableObject
 
     [Header("Mood")]
     public float maxHappiness = 100f;
+
+    [Range(0f, 1f)]
+    public float angryThreshold = 0.5f;
+
+    [Range(0f, 1f)]
+    public float joyThreshold = 0.5f;
+
     public float moodMultiplier = 1f;
     public float tipMultiplier = 1f;
+    public int maxTolerance = 1;
 
     [Header("Drinks Range")]
     public int minDrinksPerOrder = 1;
@@ -56,6 +64,9 @@ public class CustomerTypeSO : ScriptableObject
     [Header("Drink Preferences")]
     public List<WeightedDrink> drinkPreferences =
         new();
+
+    [Header("Profile")]
+    public CustomerProfileSO profile;
 
     public DrinkType GetRandomDrink()
     {

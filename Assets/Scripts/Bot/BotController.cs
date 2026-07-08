@@ -24,14 +24,11 @@ public class BotController : MonoBehaviour
 
     public BotThoughtVisual Thought { get; private set; }
     public CustomerTypeSO CustomerType {  get; private set; }
+    public CustomerProfileSO Profile { get; private set; }
     public string DebugInfo =>
     $"{name}\n" +
     $"{CustomerType?.displayName ?? "None"}\n" +
     $"{StateMachine.CurrentState.GetType().Name}";
-
-    [Header("OrderRange")]
-    public int MinDrinksPerOrder { get; private set; }
-    public int MaxDrinksPerOrder { get; private set; }
 
     protected StateMachine stateMachine;
     public StateMachine StateMachine =>
@@ -123,67 +120,13 @@ public class BotController : MonoBehaviour
         CustomerType = 
             type;
 
-        Goals.RequiredDrinks =
-            type.requiredDrinks;
+        Profile =
+            type.profile;
 
-        Goals.RequiredSocialActivities =
-            type.requiredSocialActivities;
+        Needs.Initialize(type);
 
-        Needs.thirst =
-            type.thirst;
+        Mood.Initialize(type);
 
-        Needs.comfort =
-            type.comfort;
-
-        Needs.bladder =
-            type.bladder;
-
-        Needs.maxThirst =
-            type.maxThirst;
-
-        Needs.maxComfort =
-            type.maxComfort;
-
-        Needs.maxBladder =
-            type.maxBladder;
-
-        Needs.thirstRate =
-            type.thirstRate;
-
-        Needs.comfortRate =
-            type.comfortRate;
-
-        Needs.bladderRate =
-            type.bladderRate;
-
-        Needs.maxPatience =
-            type.maxPatience;
-
-        Needs.currentPatience =
-            Needs.maxPatience;
-
-        Needs.patienceRecoveryRate =
-            type.patienceRecoveryRate;
-
-        Needs.patienceLossRate =
-            type.patienceLossRate;
-
-        MinDrinksPerOrder =
-            type.minDrinksPerOrder;
-
-        MaxDrinksPerOrder =
-            type.maxDrinksPerOrder;
-
-        Mood.maxHappiness =
-            type.maxHappiness;
-
-        Mood.happiness =
-            type.maxHappiness;
-
-        Mood.moodMultiplier =
-            type.moodMultiplier;
-
-        Mood.tipMultiplier =
-            type.tipMultiplier;
+        Goals.Initialize(type);
     }
 }
