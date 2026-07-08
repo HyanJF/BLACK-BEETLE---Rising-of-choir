@@ -88,9 +88,9 @@ public class BarSeatController : MonoBehaviour
 
         Seat.Order.OnOrderUpdated += RefreshThought;
 
-        Customer.Mood.OnToleranceDepleted += OnToleranceDepleted;
-
         Customer.Mood.OnHappinessChanged += RefreshCustomerUI;
+
+        RefreshCustomerUI();
 
         StateMachine =
             new BarSeatStateMachine();
@@ -110,8 +110,6 @@ public class BarSeatController : MonoBehaviour
         Seat.Order.OnOrderUpdated -= RefreshThought;
 
         Customer.Mood.OnHappinessChanged -= RefreshCustomerUI;
-
-        Customer.Mood.OnToleranceDepleted -= OnToleranceDepleted;
 
         Seat.VisualsSeat.HideClient();
 
@@ -319,12 +317,12 @@ public class BarSeatController : MonoBehaviour
 
         if (result == ServeResult.WrongDrink)
         {
-            Customer.Mood.RemoveTolerance();
+            Customer.Mood.RemoveTolerance(1);
 
             Customer.Mood.RemoveHappiness(
                 Customer.Needs.patienceLossRate);
 
-            if (Customer.Mood.Happiness <= Customer.Mood.AngryLimit)
+            if (Customer.Mood.Happiness <= Customer.Mood.AngryLimit || Customer.Mood.Tolerance == 0)
             {
                 Customer.Blackboard.BlockDecision(
                     BotDecision.GoToBar,
@@ -400,10 +398,5 @@ public class BarSeatController : MonoBehaviour
         ShowThought();
     }
 
-    private void OnToleranceDepleted()
-    {
-        ChangeState(
-            new LeavingAngryBarSeatState(this));
-    }
     #endregion
 }

@@ -7,6 +7,8 @@ public class BotMood : MonoBehaviour
     public float Happiness { get; private set; }
 
     public int maxTolerance;
+
+
     public int Tolerance { get; private set; }
 
     public float moodMultiplier = 1f;
@@ -56,7 +58,7 @@ public class BotMood : MonoBehaviour
         value = Mathf.Clamp(
             value,
             0,
-            maxHappiness);
+            maxHappiness + 1);
 
         if (Mathf.Approximately(
             Happiness,
@@ -68,32 +70,35 @@ public class BotMood : MonoBehaviour
         OnHappinessChanged?.Invoke();
     }
 
-    public void AddTolerance(int amount = 1)
+    public void AddTolerance(int amount)
     {
         SetTolerance(
-            Tolerance + amount);
+            Tolerance += amount);
     }
 
-    public void RemoveTolerance(int amount = 1)
+    public void RemoveTolerance(int amount)
     {
         Debug.Log("RemoveTolerance");
         SetTolerance(
-            Tolerance - amount);
+            Tolerance -= amount);
     }
 
     public void SetTolerance(int value)
     {
-        value = Mathf.Clamp(value, 0, maxTolerance);
+        value = Mathf.Clamp(value, 0, maxTolerance + 1);
 
         if (Tolerance == value)
             return;
 
         Tolerance = value;
 
+        Debug.Log($"{Tolerance} total ");
+
         OnToleranceChanged?.Invoke();
 
-        if (Tolerance == 0)
+        if (Tolerance <= 0)
         {
+            Debug.Log($"El cliente esta desasperado");
             OnToleranceDepleted?.Invoke();
         }
     }

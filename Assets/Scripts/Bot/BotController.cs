@@ -28,7 +28,9 @@ public class BotController : MonoBehaviour
     public string DebugInfo =>
     $"{name}\n" +
     $"{CustomerType?.displayName ?? "None"}\n" +
-    $"{StateMachine.CurrentState.GetType().Name}";
+    $"{StateMachine.CurrentState.GetType().Name}\n" +
+    $"Tolerancia Maxima {Mood.maxTolerance}\n" +
+    $"Tolerancia Actual {Mood.Tolerance}";
 
     protected StateMachine stateMachine;
     public StateMachine StateMachine =>
