@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9eeef22f2cac9642aa674445df5d00b, type: 3}
+  m_Name: EmptyHands
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueCollectionSO
+  type: 4
+  dialogues:
+  - Parece que olvidaste mi bebida.
+  - No trajiste nada.
+  - Sigo esperando.
+  - "\xBFY mi pedido?"
+  - Creo que falta algo.
+  - "Tus manos est\xE1n vac\xEDas."
+  - Esperaba una bebida.
+  - "A\xFAn no veo mi orden."
+  - "\xBFVienes sin nada?"
+  - Eso no ayuda mucho.
+  - "Pens\xE9 que traer\xEDas algo."
+  - "Todav\xEDa tengo sed."
+  - No era eso.
+  - Regresa cuando tengas mi bebida.
+  - Parece que olvidaste el pedido.
+  - "Aqu\xED sigo esperando."
+  - No veo ninguna bebida.
+  - Eso no es lo que esperaba.
+  - Creo que falta mi orden.
+  - "\xBFOlvidaste lo que ped\xED?"
+  - "T\xF3mate tu tiempo... supongo."
+  - "A\xFAn no recibo nada."
+  - "No tengo nada frente a m\xED."
+  - "Vuelve cuando est\xE9s listo."
+  - "Espero que la pr\xF3xima vez s\xED traigas algo."

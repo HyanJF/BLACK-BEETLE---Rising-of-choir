@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: fdf12dabff7d392438e425f049e067ea
+guid: 34bcd805a2b57864a8de2b1111b0a6de
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7601230465917963328
-    second: Erica_the_Funny_Baroness_D_0
+      213: -5023050716576679087
+    second: Astrid V1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -75,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -113,12 +113,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Erica_the_Funny_Baroness_D_0
+      name: Astrid V1_0
       rect:
         serializedVersion: 2
-        x: 12
+        x: 63
         y: 0
-        width: 154
+        width: 185
         height: 273
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0c3351f0a21038690800000000000000
-      internalID: -7601230465917963328
+      spriteID: 15bfcad8cf98a4ab0800000000000000
+      internalID: -5023050716576679087
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Erica_the_Funny_Baroness_D_0: -7601230465917963328
+      Astrid V1_0: -5023050716576679087
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

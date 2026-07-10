@@ -37,7 +37,7 @@ public class OrderDrinkState : State
 
         bot.VisualController.ShowBot();
 
-        if (bot.Mood.Happiness <= bot.Mood.AngryLimit || 
+        if (bot.Mood.IsAngry || 
             bot.Mood.Tolerance == 0)
         {
             bot.Thought.Anim(
@@ -51,7 +51,7 @@ public class OrderDrinkState : State
                 2f);
         }
 
-        bot.Mood.SetTolerance(bot.Mood.maxTolerance);
+        bot.Mood.SetTolerance(bot.Mood.MaxTolerance);
     }
 
     private void HandleSessionFinished()

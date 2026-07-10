@@ -20,6 +20,9 @@ public class BotSpawner : MonoBehaviour
     private int maxCustomers = 20;
 
     [SerializeField]
+    private ProfileManager profileManager;
+
+    [SerializeField]
     private List<BotController> activeBots =
         new();
 
@@ -39,13 +42,18 @@ public class BotSpawner : MonoBehaviour
         CustomerTypeSO type =
             GetRandomCustomerType();
 
+        CustomerProfileSO profile =
+            profileManager.GetRandomProfile();
+
         BotController bot =
             GetBot();
 
         bot.transform.position =
             spawnPoint.position;
 
-        bot.ActivateBot(type);
+        bot.ActivateBot(
+            type, 
+            profile);
 
         activeBots.Add(bot);
     }

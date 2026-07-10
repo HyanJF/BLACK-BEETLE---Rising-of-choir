@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9eeef22f2cac9642aa674445df5d00b, type: 3}
+  m_Name: Leaving
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueCollectionSO
+  type: 6
+  dialogues:
+  - Gracias por todo.
+  - Hasta luego.
+  - Fue un placer.
+  - Nos vemos.
+  - "Volver\xE9 otro d\xEDa."
+  - Me voy satisfecho.
+  - "Que tengas un buen d\xEDa."
+  - "Cu\xEDdate."
+  - "Hasta la pr\xF3xima."
+  - Todo estuvo bien.
+  - Me retiro.
+  - "Gracias por la atenci\xF3n."
+  - Fue una buena visita.
+  - Espero volver pronto.
+  - Que siga el buen trabajo.
+  - Nos veremos otra vez.
+  - Me despido.
+  - Hora de seguir mi camino.
+  - Hasta luego, tabernero.
+  - Ha sido agradable.
+  - Que tengas una buena jornada.
+  - Fue un gusto.
+  - Me marcho tranquilo.
+  - "Adi\xF3s."
+  - Gracias por el servicio.

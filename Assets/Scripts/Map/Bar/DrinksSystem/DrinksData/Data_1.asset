@@ -21,25 +21,25 @@ MonoBehaviour:
     displayName: None
   - type: 1
     icon: {fileID: -829340191149905726, guid: 0a22a7e55e253c542b8728274c6ffc6a, type: 3}
-    price: 5
-    buyPrice: 4
+    price: 4
+    buyPrice: 3.5
     satisfaction: 4
     displayName: Beer
   - type: 2
     icon: {fileID: 3059655478927053224, guid: d937531c204592d4d8ad4af1005bd8b4, type: 3}
-    price: 10
-    buyPrice: 8
+    price: 7.5
+    buyPrice: 6
     satisfaction: 7
     displayName: Wine
   - type: 3
     icon: {fileID: -5489581757894623092, guid: 00fdc253f6d299e4c868257830de6ad4, type: 3}
-    price: 12
-    buyPrice: 10
+    price: 8
+    buyPrice: 6
     satisfaction: 10
     displayName: Cocktail
   - type: 4
     icon: {fileID: -6356715536312231375, guid: af6fec177b808dc4498e2232a8a40a4c, type: 3}
-    price: 3
+    price: 2.5
     buyPrice: 1.5
     satisfaction: 3
     displayName: Soda

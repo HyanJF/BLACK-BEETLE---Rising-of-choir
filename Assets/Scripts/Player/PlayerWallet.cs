@@ -50,7 +50,7 @@ public class PlayerWallet : MonoBehaviour
 
         float happiness =
             bot.Mood.Happiness /
-            bot.Mood.maxHappiness;
+            bot.Mood.MaxHappiness;
 
         float maxTipPercent =
             0.30f;
@@ -59,7 +59,7 @@ public class PlayerWallet : MonoBehaviour
             basePrice *
             maxTipPercent *
             happiness *
-            bot.Mood.moodMultiplier;
+            bot.Mood.MoodMultiplier;
 
         AddMoney(basePrice);
 

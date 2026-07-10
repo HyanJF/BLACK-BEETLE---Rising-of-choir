@@ -139,6 +139,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3878561588823255184}
   - component: {fileID: 9022628561262119268}
+  - component: {fileID: 7676408261473348873}
   m_Layer: 0
   m_Name: SpawnBots
   m_TagString: Untagged
@@ -174,7 +175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BotSpawner
   botPrefab: {fileID: 3024825141400834938, guid: ac2c6c3b8f87ff248833d55aa4e37438, type: 3}
-  spawnPoint: {fileID: 0}
+  spawnPoint: {fileID: 1920884261792981692}
   customerPool:
   - customerType: {fileID: 11400000, guid: 93a604ec9448b14488e2eb469c81bbb2, type: 2}
     weight: 65
@@ -192,4 +193,18 @@ MonoBehaviour:
     weight: 5
   spawnInterval: 2
   maxCustomers: 5
+  profileManager: {fileID: 0}
   activeBots: []
+--- !u!114 &7676408261473348873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6769398377345937676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26a373dd4324193458fdae6bc6518632, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ProfileManager
+  profiles: []

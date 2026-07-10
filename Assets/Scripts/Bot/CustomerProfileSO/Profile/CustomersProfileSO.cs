@@ -12,6 +12,9 @@ public class CustomerProfileSO : ScriptableObject
 
     public Sprite portrait;
 
+    [Header("Dialogue")]
+    public bool useGenericDialogue;
+
     [TextArea]
     public string description;
 
@@ -42,15 +45,5 @@ public class CustomerProfileSO : ScriptableObject
 
         return group.dialogues[
             Random.Range(0, group.dialogues.Length)];
-    }
-
-    public float GetDialogueDuration(DialogueType type)
-    {
-        DialogueGroup group = GetGroup(type);
-
-        if (group == null)
-            return 0f;
-
-        return group.duration;
     }
 }

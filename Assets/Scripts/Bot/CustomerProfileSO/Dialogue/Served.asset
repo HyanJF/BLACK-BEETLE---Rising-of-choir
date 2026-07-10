@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9eeef22f2cac9642aa674445df5d00b, type: 3}
+  m_Name: Served
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueCollectionSO
+  type: 3
+  dialogues:
+  - Gracias!!!
+  - "Justo lo que quer\xEDa."
+  - Excelente.
+  - Muy amable.
+  - Perfecto.
+  - Se ve deliciosa.
+  - Buen servicio.
+  - Lo agradezco.
+  - Eso era.
+  - Muy bien.
+  - "Qu\xE9 rapidez."
+  - Me gusta.
+  - Se aprecia el esfuerzo.
+  - Justo a tiempo.
+  - No tengo quejas.
+  - "As\xED da gusto."
+  - "Excelente atenci\xF3n."
+  - Eso necesitaba.
+  - "Qu\xE9 bien."
+  - Muy buen trabajo.
+  - Gracias por la bebida.
+  - Todo en orden.
+  - "Est\xE1 perfecta."
+  - "Ahora s\xED."
+  - Salud.

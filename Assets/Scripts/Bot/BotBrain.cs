@@ -23,14 +23,14 @@ public class BotBrain : MonoBehaviour
 
     private BotDecision DecideNextAction()
     {
-        if (IsUnHappy)
+        if (bot.Mood.IsAngry)
         {
             return BotDecision.Exit;
         }
 
         if (bot.Goals.VisitCompleted)
         {
-            if (IsHappy)
+            if (bot.Mood.IsHappy)
             {
             }
 
@@ -73,11 +73,4 @@ public class BotBrain : MonoBehaviour
 
         return BotDecision.Wander;
     }
-
-    public bool IsHappy =>
-        bot.Goals.VisitCompleted &&
-        bot.Mood.Happiness >= bot.Mood.JoyLimit;
-
-    public bool IsUnHappy =>
-        bot.Mood.Happiness <= bot.Mood.AngryLimit;
 }

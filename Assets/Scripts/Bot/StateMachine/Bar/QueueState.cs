@@ -19,7 +19,7 @@ public class QueueState : State
         {
             bot.Mood.RemoveHappiness(
                 NoBarSeatPenalty *
-                bot.Mood.moodMultiplier);
+                bot.Mood.MoodMultiplier);
 
             bot.Blackboard.BlockDecision(
                 BotDecision.GoToBar,
@@ -67,7 +67,7 @@ public class QueueState : State
 
             bot.Mood.RemoveHappiness(
                 NoBarSeatPenalty *
-                bot.Mood.moodMultiplier);
+                bot.Mood.MoodMultiplier);
 
             bot.Blackboard.BlockDecision(
                 BotDecision.GoToBar,

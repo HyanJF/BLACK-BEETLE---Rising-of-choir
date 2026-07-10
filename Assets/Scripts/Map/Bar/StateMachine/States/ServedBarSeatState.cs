@@ -25,10 +25,14 @@ public class ServedBarSeatState : BarSeatState
     public override void Enter()
     {
         timer = controller.GetDialogueDuration(Dialogue);
+
+        Debug.Log(timer);
     }
 
     public override void Update()
     {
+        Debug.Log("Served Update");
+
         timer -= Time.deltaTime;
 
         if (timer > 0f)

@@ -3,19 +3,27 @@ using UnityEngine;
 
 public class BotMood : MonoBehaviour
 {
-    public float maxHappiness;
     public float Happiness { get; private set; }
-
-    public int maxTolerance;
-
 
     public int Tolerance { get; private set; }
 
-    public float moodMultiplier = 1f;
-    public float tipMultiplier = 1f;
+    public float MaxHappiness { get; private set; }
+    public int MaxTolerance { get; private set; }
+
+    public float MoodMultiplier { get; private set; }
+    public float TipMultiplier { get; private set; }
 
     public float AngryLimit { get; private set; }
     public float JoyLimit { get; private set; }
+
+    public bool IsAngry =>
+    Happiness <= AngryLimit;
+
+    public bool IsHappy =>
+        Happiness >= JoyLimit;
+
+    public bool IsToleranceDepleted =>
+        Tolerance <= 0;
 
 
     public event Action OnHappinessChanged;
@@ -24,20 +32,25 @@ public class BotMood : MonoBehaviour
 
     public void Initialize(CustomerTypeSO type)
     {
-        maxHappiness = type.maxHappiness;
-        SetHappiness(maxHappiness);
+        MaxHappiness = type.maxHappiness;
+        SetHappiness(MaxHappiness);
 
-        maxTolerance = type.maxTolerance;
-        SetTolerance(maxTolerance);
+        MaxTolerance = type.maxTolerance;
+        SetTolerance(MaxTolerance);
 
-        moodMultiplier = type.moodMultiplier;
-        tipMultiplier = type.tipMultiplier;
+        MoodMultiplier = type.moodMultiplier;
+        TipMultiplier = type.tipMultiplier;
 
+        CalculateMoodLimits(type);
+    }
+
+    private void CalculateMoodLimits(CustomerTypeSO type)
+    {
         AngryLimit =
-            maxHappiness * type.angryThreshold;
+            MaxHappiness * type.angryThreshold;
 
         JoyLimit =
-            maxHappiness * type.joyThreshold;
+            MaxHappiness * type.joyThreshold;
     }
 
 
@@ -58,7 +71,7 @@ public class BotMood : MonoBehaviour
         value = Mathf.Clamp(
             value,
             0,
-            maxHappiness + 1);
+            MaxHappiness);
 
         if (Mathf.Approximately(
             Happiness,
@@ -73,32 +86,31 @@ public class BotMood : MonoBehaviour
     public void AddTolerance(int amount)
     {
         SetTolerance(
-            Tolerance += amount);
+            Tolerance + amount);
     }
 
     public void RemoveTolerance(int amount)
     {
-        Debug.Log("RemoveTolerance");
         SetTolerance(
-            Tolerance -= amount);
+            Tolerance - amount);
     }
 
     public void SetTolerance(int value)
     {
-        value = Mathf.Clamp(value, 0, maxTolerance + 1);
+        value = Mathf.Clamp(
+            value, 
+            0, 
+            MaxTolerance);
 
         if (Tolerance == value)
             return;
 
         Tolerance = value;
 
-        Debug.Log($"{Tolerance} total ");
-
         OnToleranceChanged?.Invoke();
 
-        if (Tolerance <= 0)
+        if (IsToleranceDepleted)
         {
-            Debug.Log($"El cliente esta desasperado");
             OnToleranceDepleted?.Invoke();
         }
     }

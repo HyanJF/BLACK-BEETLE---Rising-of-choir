@@ -11,6 +11,8 @@ public class GameDataBase : MonoBehaviour
     public BarCustomerUI customerUI;
     public ActionUI actionUI;
     public DialogueUI dialogueUI;
+    public DialogueDatabase dialogueData;
+    public DialogueTimingDatabase dialogueTiming;
     private void Awake()
     {
         Instance = this;

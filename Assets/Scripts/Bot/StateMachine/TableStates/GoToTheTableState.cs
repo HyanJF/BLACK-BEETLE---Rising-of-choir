@@ -28,7 +28,7 @@ public class GoToTheTable : State
         {
             bot.Mood.RemoveHappiness(
                 NoTablePenalty *
-                bot.Mood.moodMultiplier);
+                bot.Mood.MoodMultiplier);
 
             bot.Blackboard.BlockDecision(
                 BotDecision.GoToTable, 

@@ -22,7 +22,7 @@ public class DialogueUI : MonoBehaviour
 
     public void Show(
         BotController customer,
-        DialogueType type)
+        string dialogue)
     {
         if (customer == null)
             return;
@@ -37,7 +37,7 @@ public class DialogueUI : MonoBehaviour
             profile.displayName;
 
         dialogueText.text =
-            profile.GetRandomDialogue(type);
+            dialogue;
 
         root.SetActive(true);
     }

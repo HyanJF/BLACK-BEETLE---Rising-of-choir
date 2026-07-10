@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 112718717c772e74ead118328773ad47
+guid: 7d54e8cb5786a8b40b4ccc20ade3c5a0
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4231878208866916876
-    second: Erica_the_Funny_Baroness_H_0
+      213: 6185716984692121077
+    second: Celestia V1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -75,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Erica_the_Funny_Baroness_H_0
+      name: Celestia V1_0
       rect:
         serializedVersion: 2
-        x: 13
+        x: 55
         y: 0
-        width: 146
-        height: 273
+        width: 201
+        height: 240
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c0a9a3c3fc6aaba30800000000000000
-      internalID: 4231878208866916876
+      spriteID: 5fd9ca103d418d550800000000000000
+      internalID: 6185716984692121077
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Erica_the_Funny_Baroness_H_0: 4231878208866916876
+      Celestia V1_0: 6185716984692121077
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

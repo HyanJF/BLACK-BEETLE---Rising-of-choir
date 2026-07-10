@@ -17,7 +17,7 @@ public class BathroomQueueState : State
         {
             bot.Mood.RemoveHappiness(
                 NoBathroomQueuePenalty *
-                bot.Mood.moodMultiplier);
+                bot.Mood.MoodMultiplier);
 
             bot.Blackboard.BlockDecision(
                 BotDecision.GoToBathroom,
@@ -51,7 +51,7 @@ public class BathroomQueueState : State
 
             bot.Mood.RemoveHappiness(
                 NoBathroomQueuePenalty *
-                bot.Mood.moodMultiplier);
+                bot.Mood.MoodMultiplier);
 
             bot.Blackboard.BlockDecision(
                 BotDecision.GoToBathroom,

@@ -65,9 +65,6 @@ public class CustomerTypeSO : ScriptableObject
     public List<WeightedDrink> drinkPreferences =
         new();
 
-    [Header("Profile")]
-    public CustomerProfileSO profile;
-
     public DrinkType GetRandomDrink()
     {
         if (drinkPreferences.Count == 0)

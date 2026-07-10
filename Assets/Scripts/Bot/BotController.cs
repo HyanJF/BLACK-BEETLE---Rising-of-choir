@@ -29,7 +29,7 @@ public class BotController : MonoBehaviour
     $"{name}\n" +
     $"{CustomerType?.displayName ?? "None"}\n" +
     $"{StateMachine.CurrentState.GetType().Name}\n" +
-    $"Tolerancia Maxima {Mood.maxTolerance}\n" +
+    $"Tolerancia Maxima {Mood.MaxTolerance}\n" +
     $"Tolerancia Actual {Mood.Tolerance}";
 
     protected StateMachine stateMachine;
@@ -68,14 +68,17 @@ public class BotController : MonoBehaviour
     }
 
     public void ActivateBot(
-        CustomerTypeSO type)
+    CustomerTypeSO type,
+    CustomerProfileSO profileSO)
     {
-        VisualController.ShowBot();
-        Thought.DisableThought();
-
         ResetRuntimeData();
 
-        Initialize(type);
+        Initialize(
+            type,
+            profileSO);
+
+        VisualController.ShowBot();
+        Thought.DisableThought();
 
         Blackboard.CurrentRoute =
             (RouteType)
@@ -114,16 +117,18 @@ public class BotController : MonoBehaviour
 
         stateMachine =
             new StateMachine();
+
+        CustomerType = null;
+        Profile = null;
     }
 
     public void Initialize(
-        CustomerTypeSO type)
+        CustomerTypeSO type,
+        CustomerProfileSO profile)
     {
-        CustomerType = 
-            type;
+        CustomerType = type;
 
-        Profile =
-            type.profile;
+        Profile = profile;
 
         Needs.Initialize(type);
 

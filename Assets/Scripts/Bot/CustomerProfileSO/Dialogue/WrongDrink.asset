@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9eeef22f2cac9642aa674445df5d00b, type: 3}
+  m_Name: WrongDrink
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueCollectionSO
+  type: 5
+  dialogues:
+  - Esa no es mi bebida.
+  - Creo que te equivocaste.
+  - "Eso no fue lo que ped\xED."
+  - Revisa bien la orden.
+  - "No ped\xED esto."
+  - Hay un error.
+  - "Esa bebida no es para m\xED."
+  - "Int\xE9ntalo otra vez."
+  - No es correcto.
+  - No era esa.
+  - Creo que confundiste los pedidos.
+  - Eso pertenece a otra mesa.
+  - "Esa no la ped\xED."
+  - No puedo aceptar esto.
+  - "F\xEDjate mejor la pr\xF3xima vez."
+  - No es lo que esperaba.
+  - "Est\xE1s confundido."
+  - Revisa mi pedido.
+  - "Hay una equivocaci\xF3n."
+  - Esa bebida no coincide.
+  - Me temo que no.
+  - Intenta nuevamente.
+  - No es la bebida correcta.
+  - Sigue sin ser mi pedido.
+  - Creo que hubo un malentendido.

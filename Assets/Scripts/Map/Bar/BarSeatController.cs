@@ -26,6 +26,12 @@ public class BarSeatController : MonoBehaviour
 
     #endregion
 
+    #region Data
+
+    private string currentDialogue;
+
+    #endregion
+
     #region Interaction
 
     public bool CanInteract
@@ -230,14 +236,38 @@ public class BarSeatController : MonoBehaviour
 
         GameDataBase.Instance.dialogueUI.Show(
             Customer,
-            StateMachine.CurrentState.Dialogue);
+            currentDialogue);
     }
 
     public float GetDialogueDuration(DialogueType type)
     {
-        float dialogueTime = Customer.Profile.GetDialogueDuration(type);
+        float dialogueTime = GameDataBase.Instance.dialogueTiming.GetDuration(type);
 
         return dialogueTime;
+    }
+
+    private void UpdateCurrentDialogue()
+    {
+        DialogueType type =
+            StateMachine.CurrentState.Dialogue;
+
+        if (type == DialogueType.None)
+        {
+            currentDialogue = string.Empty;
+            return;
+        }
+
+        if (Customer.Profile.useGenericDialogue)
+        {
+            currentDialogue =
+                GameDataBase.Instance.dialogueData
+                    .GetRandomDialogue(type);
+        }
+        else
+        {
+            currentDialogue =
+                Customer.Profile.GetRandomDialogue(type);
+        }
     }
     #endregion
 
@@ -258,7 +288,7 @@ public class BarSeatController : MonoBehaviour
 
         GameDataBase.Instance.customerUI.SetHappiness(
             Customer.Mood.Happiness,
-            Customer.Mood.maxHappiness);
+            Customer.Mood.MaxHappiness);
     }
     #endregion
 
@@ -322,7 +352,7 @@ public class BarSeatController : MonoBehaviour
             Customer.Mood.RemoveHappiness(
                 Customer.Needs.patienceLossRate);
 
-            if (Customer.Mood.Happiness <= Customer.Mood.AngryLimit || Customer.Mood.Tolerance == 0)
+            if (Customer.Mood.IsAngry || Customer.Mood.IsToleranceDepleted)
             {
                 Customer.Blackboard.BlockDecision(
                     BotDecision.GoToBar,
@@ -393,6 +423,8 @@ public class BarSeatController : MonoBehaviour
             DisableInteraction();
 
         SetInteraction(nextState.InteractionText);
+
+        UpdateCurrentDialogue();
 
         ShowDialogue();
         ShowThought();
