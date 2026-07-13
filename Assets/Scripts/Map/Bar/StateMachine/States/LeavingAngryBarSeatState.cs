@@ -9,6 +9,8 @@ public class LeavingAngryBarSeatState : BarSeatState
 
     private float timer;
 
+    public override InteractionSoundType InteractionSound =>
+        InteractionSoundType.LeavingAngry;
     public override DialogueType Dialogue => 
         DialogueType.LeavingAngry;
 

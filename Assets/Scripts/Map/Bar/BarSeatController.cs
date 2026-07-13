@@ -424,6 +424,9 @@ public class BarSeatController : MonoBehaviour
 
         SetInteraction(nextState.InteractionText);
 
+        InteractableSounds.instance.Play(
+            nextState.InteractionSound);
+
         UpdateCurrentDialogue();
 
         ShowDialogue();

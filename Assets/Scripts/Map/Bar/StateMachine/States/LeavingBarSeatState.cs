@@ -9,6 +9,8 @@ public class LeavingBarSeatState : BarSeatState
 
     private float timer;
 
+    public override InteractionSoundType InteractionSound =>
+        InteractionSoundType.Leaving;
     public override DialogueType Dialogue =>
         DialogueType.Leaving;
 

@@ -7,6 +7,9 @@ public class GreetingBarSeatState : BarSeatState
         : base(controller)
     { }
 
+    public override InteractionSoundType InteractionSound =>
+    InteractionSoundType.Greeting;
+
     public override DialogueType Dialogue => 
         DialogueType.Greeting;
 

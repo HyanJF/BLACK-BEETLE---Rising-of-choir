@@ -35,3 +35,16 @@ public enum ThoughtType
     Angry,
     Leaving
 }
+
+public enum InteractionSoundType
+{
+    None,
+
+    Greeting,
+    Ordering,
+    Served,
+    EmptyHands,
+    WrongDrink,
+    Leaving,
+    LeavingAngry
+}

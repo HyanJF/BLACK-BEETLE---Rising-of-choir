@@ -10,6 +10,9 @@ public class ServedBarSeatState : BarSeatState
     {
     }
 
+    public override InteractionSoundType InteractionSound =>
+        InteractionSoundType.Served;
+
     public override DialogueType Dialogue =>
         DialogueType.Served;
 

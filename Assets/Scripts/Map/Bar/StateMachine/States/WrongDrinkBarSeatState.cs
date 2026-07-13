@@ -9,6 +9,9 @@ public class WrongDrinkBarSeatState : BarSeatState
         : base(controller)
     { }
 
+    public override InteractionSoundType InteractionSound =>
+        InteractionSoundType.WrongDrink;
+
     public override DialogueType Dialogue => 
         DialogueType.WrongDrink;
 

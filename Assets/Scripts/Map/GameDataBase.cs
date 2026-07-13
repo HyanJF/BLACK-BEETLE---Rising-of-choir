@@ -13,6 +13,7 @@ public class GameDataBase : MonoBehaviour
     public DialogueUI dialogueUI;
     public DialogueDatabase dialogueData;
     public DialogueTimingDatabase dialogueTiming;
+    public SoundController soundController;
     private void Awake()
     {
         Instance = this;

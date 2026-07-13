@@ -22,7 +22,7 @@ public class BarStockInventory : MonoBehaviour
     public bool IsFull =>
         CurrentStock >= maxStock;
 
-    private void Awake()
+    private void Start()
     {
         Restock();
     }
@@ -36,6 +36,8 @@ public class BarStockInventory : MonoBehaviour
 
         OnStockChanged?.Invoke();
 
+        InteractableSounds.instance.TakedrinkPlaySound();
+
         return true;
     }
 
@@ -44,5 +46,7 @@ public class BarStockInventory : MonoBehaviour
         CurrentStock = maxStock;
 
         OnStockChanged?.Invoke();
+
+        InteractableSounds.instance.RestoredPlaySound();
     }
 }

@@ -27,6 +27,9 @@ public abstract class BarSeatState
         this.controller = controller;
     }
 
+    public virtual InteractionSoundType InteractionSound =>
+    InteractionSoundType.None;
+
     public virtual DialogueType Dialogue =>
         DialogueType.None;
 

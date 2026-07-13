@@ -6,7 +6,8 @@ public class OrderingBarSeatState : BarSeatState
         BarSeatController controller)
         : base(controller)
     { }
-
+    public override InteractionSoundType InteractionSound =>
+        InteractionSoundType.Ordering;
     public override DialogueType Dialogue =>
         DialogueType.Ordering;
 

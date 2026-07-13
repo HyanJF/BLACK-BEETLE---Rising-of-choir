@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ProfileManager : MonoBehaviour
@@ -5,13 +6,42 @@ public class ProfileManager : MonoBehaviour
     [SerializeField]
     private CustomerProfileSO[] profiles;
 
+
+    private List<CustomerProfileSO> availableProfiles =
+        new();
+
+
+    private void Awake()
+    {
+        ResetPool();
+    }
+
+
     public CustomerProfileSO GetRandomProfile()
     {
-        if (profiles == null ||
-            profiles.Length == 0)
-            return null;
+        if (availableProfiles.Count == 0)
+        {
+            ResetPool();
+        }
 
-        return profiles[
-            Random.Range(0, profiles.Length)];
+        int index =
+            Random.Range(
+                0,
+                availableProfiles.Count);
+
+        CustomerProfileSO profile =
+            availableProfiles[index];
+
+        availableProfiles.RemoveAt(index);
+
+        return profile;
+    }
+
+
+    private void ResetPool()
+    {
+        availableProfiles =
+            new List<CustomerProfileSO>(
+                profiles);
     }
 }

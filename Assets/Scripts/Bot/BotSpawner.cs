@@ -30,6 +30,9 @@ public class BotSpawner : MonoBehaviour
     private Queue<BotController> pooledBots =
         new();
 
+    [SerializeField]
+    private SpawnBotsSounds sounds;
+
     private void Start()
     {
         StartCoroutine(
@@ -56,6 +59,8 @@ public class BotSpawner : MonoBehaviour
             profile);
 
         activeBots.Add(bot);
+
+        sounds.PlaySpawn();
     }
 
     private BotController GetBot()
@@ -90,6 +95,8 @@ public class BotSpawner : MonoBehaviour
         bot.DeactivateBot();
 
         pooledBots.Enqueue(bot);
+
+        
     }
 
     private CustomerTypeSO GetRandomCustomerType()

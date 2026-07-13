@@ -9,6 +9,9 @@ public class EmptyHandsBarSeatState : BarSeatState
         : base(controller)
     { }
 
+    public override InteractionSoundType InteractionSound =>
+        InteractionSoundType.EmptyHands;
+
     public override DialogueType Dialogue => 
         DialogueType.EmptyHands;
 
