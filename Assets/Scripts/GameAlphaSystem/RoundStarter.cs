@@ -44,4 +44,9 @@ public class RoundStarter :
 
         roundManager.StartRound();
     }
+
+    public void ResetUsed()
+    {
+        used = false;
+    }
 }

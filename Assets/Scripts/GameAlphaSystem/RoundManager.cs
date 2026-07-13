@@ -7,7 +7,7 @@ public class RoundManager : MonoBehaviour
     private BotSpawner spawner;
 
     [SerializeField]
-    private float firstRoundDuration = 120f;
+    private float firstRoundDuration = 60f;
 
     [SerializeField]
     private RoundVisualController visuals;
@@ -17,6 +17,9 @@ public class RoundManager : MonoBehaviour
 
     [SerializeField]
     private GameObject lights;
+
+    [SerializeField]
+    private RoundStarter starter;
 
     private bool roundEnding;
 
@@ -37,6 +40,8 @@ public class RoundManager : MonoBehaviour
                 "INICIANDO RONDA",
                 "Prepárate para recibir clientes",
                 BeginRound);
+
+        visuals.StartRoundVisuals();
     }
 
     private IEnumerator RoundRoutine(float duration)
@@ -69,6 +74,11 @@ public class RoundManager : MonoBehaviour
                 "RONDA COMPLETADA",
                 "El bar vuelve a estar vacío",
                 FinishRound);
+
+        visuals.ResetVisuals();
+
+        starter.ResetUsed();
+
     }
 
     private void FinishRound()
@@ -78,8 +88,6 @@ public class RoundManager : MonoBehaviour
         music.StopMusic();
 
         lights.SetActive(false);
-
-        visuals.ResetVisuals();
     }
 
     private void BeginRound()
@@ -91,8 +99,6 @@ public class RoundManager : MonoBehaviour
         music.PlayRandomMusic();
 
         spawner.StartSpawn();
-
-        visuals.StartRoundVisuals();
 
         StartCoroutine(
             RoundRoutine(
