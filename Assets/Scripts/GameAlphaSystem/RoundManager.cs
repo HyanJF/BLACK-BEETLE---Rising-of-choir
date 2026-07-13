@@ -74,11 +74,6 @@ public class RoundManager : MonoBehaviour
                 "RONDA COMPLETADA",
                 "El bar vuelve a estar vacío",
                 FinishRound);
-
-        visuals.ResetVisuals();
-
-        starter.ResetUsed();
-
     }
 
     private void FinishRound()
@@ -88,6 +83,10 @@ public class RoundManager : MonoBehaviour
         music.StopMusic();
 
         lights.SetActive(false);
+
+        visuals.ResetVisuals();
+
+        starter.ResetUsed();
     }
 
     private void BeginRound()

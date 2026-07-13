@@ -9,12 +9,13 @@ public class RoundStarter :
 
     private bool playerInside;
 
+    [SerializeField]
     private bool used;
 
     public bool CanInteract =>
         playerInside &&
-        !used &&
-        !roundManager.IsRoundActive;
+        !roundManager.IsRoundActive &&
+        !used;
 
     private void OnTriggerEnter2D(
         Collider2D collision)
@@ -47,6 +48,7 @@ public class RoundStarter :
 
     public void ResetUsed()
     {
+        Debug.Log("Reiniciar ronda activado");
         used = false;
     }
 }
