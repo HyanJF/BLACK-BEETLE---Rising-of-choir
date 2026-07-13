@@ -14,6 +14,11 @@ public class GameDataBase : MonoBehaviour
     public DialogueDatabase dialogueData;
     public DialogueTimingDatabase dialogueTiming;
     public SoundController soundController;
+    public MusicRoundUI musicUI;
+
+    [Header("Alpha System")]
+    public RoundTransitionUI roundTransitionUI;
+    public RoundManager roundManager;
     private void Awake()
     {
         Instance = this;

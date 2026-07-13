@@ -33,12 +33,31 @@ public class BotSpawner : MonoBehaviour
     [SerializeField]
     private SpawnBotsSounds sounds;
 
-    private void Start()
+    private Coroutine spawnRoutine;
+
+    #region AlphaSystem
+    public bool IsSpawning =>
+        spawnRoutine != null;
+
+    public void StartSpawn()
     {
-        StartCoroutine(
-            SpawnRoutine()
-        );
+        if (spawnRoutine != null)
+            return;
+
+        spawnRoutine =
+            StartCoroutine(SpawnRoutine());
     }
+
+    public void StopSpawn()
+    {
+        if (spawnRoutine == null)
+            return;
+
+        StopCoroutine(spawnRoutine);
+        spawnRoutine = null;
+    }
+
+    #endregion
 
     public void SpawnBot()
     {
@@ -86,7 +105,7 @@ public class BotSpawner : MonoBehaviour
     }
 
     private void ReturnBot(
-    BotController bot)
+        BotController bot)
     {
         activeBots.Remove(bot);
 
@@ -96,7 +115,17 @@ public class BotSpawner : MonoBehaviour
 
         pooledBots.Enqueue(bot);
 
-        
+        sounds.PlayDespawn();
+
+        if (activeBots.Count == 0 &&
+            !GameDataBase.Instance
+                .roundManager
+                .IsRoundActive)
+        {
+            GameDataBase.Instance
+                .roundManager
+                .RoundCompleted();
+        }
     }
 
     private CustomerTypeSO GetRandomCustomerType()

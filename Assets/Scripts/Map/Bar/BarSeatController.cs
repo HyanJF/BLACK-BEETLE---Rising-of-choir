@@ -107,9 +107,12 @@ public class BarSeatController : MonoBehaviour
 
     public void FinishSession()
     {
-        GameDataBase.Instance.actionUI.Hide();
-        GameDataBase.Instance.dialogueUI.Hide();
-        GameDataBase.Instance.customerUI.Hide();
+        if (playerInside)
+        {
+            GameDataBase.Instance.actionUI.Hide();
+            GameDataBase.Instance.dialogueUI.Hide();
+            GameDataBase.Instance.customerUI.Hide();
+        }
 
         Seat.Order.OnOrderUpdated -= RefreshCustomerUI;
 

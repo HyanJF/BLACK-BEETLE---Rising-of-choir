@@ -11,6 +11,10 @@ public class SoundController : MonoBehaviour
     [SerializeField]
     private AudioSource interactionSounds;
 
+    [Header("Sources")]
+    [SerializeField]
+    private AudioSource musicSource;
+
     public void PlaySoundPlayer(AudioClip clip)
     {
         soundPlayer.PlayOneShot(clip);
@@ -24,5 +28,25 @@ public class SoundController : MonoBehaviour
     public void PlaySoundInteracion(AudioClip clip)
     {
         interactionSounds.PlayOneShot(clip);
+    }
+
+    public void PlayMusic(AudioClip clip)
+    {
+        if (clip == null)
+            return;
+
+        if (musicSource.clip == clip &&
+            musicSource.isPlaying)
+            return;
+
+        musicSource.clip = clip;
+        musicSource.loop = true;
+        musicSource.Play();
+    }
+
+    public void StopMusic()
+    {
+        musicSource.Stop();
+        musicSource.clip = null;
     }
 }
