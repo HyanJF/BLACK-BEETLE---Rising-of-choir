@@ -145,7 +145,9 @@ public class BarStockController : MonoBehaviour
         GameDataBase.Instance.actionUI.Show(
             Stock.Inventory.IsEmpty
                 ? "Rellenar"
-                : "Tomar\nBebida");
+                : "Tomar\nBebida",
+            true);
+
     }
 
     #endregion

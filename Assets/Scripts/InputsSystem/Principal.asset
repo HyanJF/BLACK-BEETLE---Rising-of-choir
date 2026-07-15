@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46387019b6a039248945d00d7ae87f36, type: 3}
+  m_Name: Principal
+  m_EditorClassIdentifier: Assembly-CSharp::InputIconDatabase
+  keyboardInteract: {fileID: -4914513220774144829, guid: efeb80257a1d63a4fb4bbd0aabddf12d, type: 3}
+  xboxInteract: {fileID: 21300000, guid: 197e3ab3b85546d45b7132d4f6cb28b5, type: 3}
+  keyboardPrevious: {fileID: 21300000, guid: 269cf851880af1b46b5b1cfee0b50b7c, type: 3}
+  xboxPrevious: {fileID: 21300000, guid: a78886281da24514c8e470a7e3150a8c, type: 3}
+  keyboardNext: {fileID: 21300000, guid: 20a32654638151e4bb7c1a3330d4f7a0, type: 3}
+  xboxNext: {fileID: 21300000, guid: a97980a66e6413e49980b26a0ce9583e, type: 3}

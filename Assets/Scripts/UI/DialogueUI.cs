@@ -15,14 +15,28 @@ public class DialogueUI : MonoBehaviour
     [Header("Dialogue")]
     [SerializeField] private TextMeshProUGUI dialogueText;
 
+    [Header("Dialogue Colors")]
+    [SerializeField]
+    private Color normalColor = Color.white;
+
+    [SerializeField]
+    private Color successColor = Color.green;
+
+    [SerializeField]
+    private Color errorColor = Color.red;
+
+    [SerializeField]
+    private Color infoColor = Color.cyan;
+
     private void Awake()
     {
         Hide();
     }
 
     public void Show(
-        BotController customer,
-        string dialogue)
+    BotController customer,
+    string dialogue,
+    DialogueColorType dialogueColor)
     {
         if (customer == null)
             return;
@@ -39,7 +53,29 @@ public class DialogueUI : MonoBehaviour
         dialogueText.text =
             dialogue;
 
+        dialogueText.color =
+            GetDialogueColor(dialogueColor);
+
         root.SetActive(true);
+    }
+
+    private Color GetDialogueColor(
+    DialogueColorType type)
+    {
+        switch (type)
+        {
+            case DialogueColorType.Success:
+                return successColor;
+
+            case DialogueColorType.Error:
+                return errorColor;
+
+            case DialogueColorType.Info:
+                return infoColor;
+
+            default:
+                return normalColor;
+        }
     }
 
     public void Hide()

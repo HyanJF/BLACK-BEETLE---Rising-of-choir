@@ -10,9 +10,10 @@ public class OrderingBarSeatState : BarSeatState
         InteractionSoundType.Ordering;
     public override DialogueType Dialogue =>
         DialogueType.Ordering;
-
     public override ThoughtType Thought => 
         ThoughtType.Ordering;
+    public override DialogueColorType DialogueColor =>
+    DialogueColorType.Normal;
 
     public override string InteractionText => 
         "Atender";

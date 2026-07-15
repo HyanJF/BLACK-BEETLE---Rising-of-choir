@@ -13,9 +13,10 @@ public class LeavingAngryBarSeatState : BarSeatState
         InteractionSoundType.LeavingAngry;
     public override DialogueType Dialogue => 
         DialogueType.LeavingAngry;
-
     public override ThoughtType Thought => 
         ThoughtType.Angry;
+    public override DialogueColorType DialogueColor =>
+     DialogueColorType.Error;
 
     public override string InteractionText => 
         string.Empty;

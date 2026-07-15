@@ -9,12 +9,12 @@ public class GreetingBarSeatState : BarSeatState
 
     public override InteractionSoundType InteractionSound =>
     InteractionSoundType.Greeting;
-
-    public override DialogueType Dialogue => 
+    public override DialogueType Dialogue =>
         DialogueType.Greeting;
-
     public override ThoughtType Thought => 
         ThoughtType.Greeting;
+    public override DialogueColorType DialogueColor =>
+    DialogueColorType.Normal;
 
     public override bool CanPlayerInteract => 
         true;

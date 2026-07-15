@@ -48,3 +48,12 @@ public enum InteractionSoundType
     Leaving,
     LeavingAngry
 }
+
+public enum DialogueColorType
+{
+    Normal,
+    Success,
+    Error,
+    Warning,
+    Info
+}

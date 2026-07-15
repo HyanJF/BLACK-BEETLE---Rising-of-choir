@@ -12,12 +12,12 @@ public class ServedBarSeatState : BarSeatState
 
     public override InteractionSoundType InteractionSound =>
         InteractionSoundType.Served;
-
     public override DialogueType Dialogue =>
         DialogueType.Served;
-
     public override ThoughtType Thought =>
         ThoughtType.Served;
+    public override DialogueColorType DialogueColor =>
+        DialogueColorType.Success;
 
     public override string InteractionText => 
         string.Empty;

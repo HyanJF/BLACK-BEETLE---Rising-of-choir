@@ -17,6 +17,9 @@ public class LeavingBarSeatState : BarSeatState
     public override ThoughtType Thought => 
         ThoughtType.Leaving;
 
+    public override DialogueColorType DialogueColor =>
+        DialogueColorType.Info;
+
     public override string InteractionText => 
         string.Empty;
 

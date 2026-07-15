@@ -18,6 +18,9 @@ public class EmptyHandsBarSeatState : BarSeatState
     public override ThoughtType Thought => 
         ThoughtType.EmptyHands;
 
+    public override DialogueColorType DialogueColor => 
+        DialogueColorType.Normal;
+
     public override string InteractionText => 
         string.Empty;
 

@@ -132,8 +132,9 @@ public class BarSeatController : MonoBehaviour
 
         Customer = null;
 
+        DisableInteraction();
+
         InteractionText = string.Empty;
-        CanInteract = false;
 
         OnCustomerFinished?.Invoke();
     }
@@ -196,9 +197,7 @@ public class BarSeatController : MonoBehaviour
         }
 
         GameDataBase.Instance.actionUI.Show(
-            InteractionText);
-
-        GameDataBase.Instance.actionUI.SetInteractable(
+            InteractionText,
             CanInteract);
     }
 
@@ -239,7 +238,8 @@ public class BarSeatController : MonoBehaviour
 
         GameDataBase.Instance.dialogueUI.Show(
             Customer,
-            currentDialogue);
+            currentDialogue,
+            StateMachine.CurrentState.DialogueColor);
     }
 
     public float GetDialogueDuration(DialogueType type)

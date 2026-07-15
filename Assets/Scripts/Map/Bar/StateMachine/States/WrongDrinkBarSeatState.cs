@@ -18,6 +18,9 @@ public class WrongDrinkBarSeatState : BarSeatState
     public override ThoughtType Thought => 
         ThoughtType.Angry;
 
+    public override DialogueColorType DialogueColor =>
+        DialogueColorType.Error;
+
     public override string InteractionText => 
         string.Empty;
 

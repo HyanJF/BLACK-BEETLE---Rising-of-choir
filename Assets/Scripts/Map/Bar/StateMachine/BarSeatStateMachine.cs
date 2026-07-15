@@ -36,6 +36,9 @@ public abstract class BarSeatState
     public virtual ThoughtType Thought =>
         ThoughtType.None;
 
+    public virtual DialogueColorType DialogueColor =>
+    DialogueColorType.Normal;
+
     public virtual string InteractionText => 
         string.Empty;
 

@@ -15,31 +15,72 @@ public class ActionUI : MonoBehaviour
 
     [Header("Colors")]
     [SerializeField]
-    private Color enabledColor = Color.white;
+    private Color enabledColor =
+        Color.white;
 
     [SerializeField]
-    private Color disabledColor = Color.gray;
+    private Color disabledColor =
+        Color.gray;
+
+    [SerializeField]
+    private InputActionType actionType;
 
     private void Awake()
     {
+        if (InputDeviceManager.Instance != null)
+        {
+            InputDeviceManager.Instance
+                .OnDeviceChanged += RefreshIcon;
+        }
+
+        RefreshIcon();
+
         Hide();
     }
 
-    public void Show(string action)
+    private void OnDestroy()
     {
+        if (InputDeviceManager.Instance != null)
+        {
+            InputDeviceManager.Instance
+                .OnDeviceChanged -= RefreshIcon;
+        }
+    }
+
+    public void Show(
+        string action,
+        bool interactable)
+    {
+        RefreshIcon();
+
         root.SetActive(true);
 
         actionText.text = action;
+
+        SetInteractable(interactable);
     }
 
-    public void SetInteractable(bool value)
+    public void SetInteractable(
+        bool value)
     {
         inputImage.color =
-            value ? enabledColor : disabledColor;
+            value
+            ? enabledColor
+            : disabledColor;
     }
 
     public void Hide()
     {
         root.SetActive(false);
+    }
+
+    private void RefreshIcon()
+    {
+        if (InputDeviceManager.Instance == null)
+            return;
+
+        inputImage.sprite =
+            InputDeviceManager.Instance
+                .GetSprite(actionType);
     }
 }
