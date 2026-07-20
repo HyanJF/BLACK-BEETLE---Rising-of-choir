@@ -58,8 +58,6 @@ public class InputDeviceManager : MonoBehaviour
 
         CurrentDevice = device;
 
-        Debug.Log($"Dispositivo actual: {device}");
-
         OnDeviceChanged?.Invoke(device);
     }
 }

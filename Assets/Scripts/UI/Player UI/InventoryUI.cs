@@ -14,19 +14,12 @@ public class InventoryUI : MonoBehaviour
 
     private void Start()
     {
-        Refresh();
-        RefreshInputIcons();
-    }
-
-    private void OnEnable()
-    {
         inventory.OnInventoryChanged += Refresh;
 
-        if (InputManager.Instance != null)
-        {
-            InputManager.Instance.OnInputDeviceChanged +=
+        Refresh();
+
+        InputManager.Instance.OnInputDeviceChanged +=
                 RefreshInputIcons;
-        }
     }
 
     private void OnDisable()

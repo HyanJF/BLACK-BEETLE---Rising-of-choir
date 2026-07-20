@@ -24,19 +24,14 @@ public class ActionUI : MonoBehaviour
     [SerializeField]
     private InputIcon interactIcon;
 
-    private void Awake()
+    private void Start()
     {
         Hide();
-    }
-
-    private void OnEnable()
-    {
-        if (InputManager.Instance == null)
-            return;
 
         InputManager.Instance.OnInputDeviceChanged += RefreshIcon;
 
         RefreshIcon();
+
     }
 
     private void OnDisable()

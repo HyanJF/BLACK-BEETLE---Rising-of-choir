@@ -33,7 +33,6 @@ public class InputManager : MonoBehaviour
     private void HandleDeviceChanged(
     InputDeviceType device)
     {
-        Debug.Log("InputManager recibió cambio");
 
         OnInputDeviceChanged?.Invoke();
     }
