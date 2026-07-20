@@ -1131,11 +1131,11 @@ PrefabInstance:
       objectReference: {fileID: 1450363379}
     - target: {fileID: 9022628561262119268, guid: 734a8726c9729914b98553be9af30767, type: 3}
       propertyPath: maxCustomers
-      value: 15
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 9022628561262119268, guid: 734a8726c9729914b98553be9af30767, type: 3}
       propertyPath: spawnInterval
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9022628561262119268, guid: 734a8726c9729914b98553be9af30767, type: 3}
       propertyPath: profileManager
@@ -10326,7 +10326,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1280875928
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11130,7 +11130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoundManager
   spawner: {fileID: 1450363381}
-  firstRoundDuration: 15
+  firstRoundDuration: 25
   visuals: {fileID: 1392214238}
   music: {fileID: 532718245}
   lights: {fileID: 1118775706}
