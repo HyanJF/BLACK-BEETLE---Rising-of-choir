@@ -1,64 +1,52 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.LowLevel;
+using UnityEngine.UI;
 
 public class InputDeviceManager : MonoBehaviour
 {
     public static InputDeviceManager Instance;
 
-    [SerializeField]
-    private InputIconDatabase icons;
-
     public InputDeviceType CurrentDevice
     {
         get;
         private set;
-    }
+    } = InputDeviceType.KeyboardMouse;
 
-    public event Action OnDeviceChanged;
+    public event Action<InputDeviceType> OnDeviceChanged;
 
     private void Awake()
     {
         Instance = this;
-
-        CurrentDevice =
-            InputDeviceType.KeyboardMouse;
     }
 
     private void OnEnable()
     {
-        InputSystem.onActionChange +=
-            OnActionChange;
+        InputSystem.onEvent += OnInputEvent;
     }
 
     private void OnDisable()
     {
-        InputSystem.onActionChange -=
-            OnActionChange;
+        InputSystem.onEvent -= OnInputEvent;
     }
 
-    private void OnActionChange(
-        object obj,
-        InputActionChange change)
+    private void OnInputEvent(
+        InputEventPtr eventPtr,
+        InputDevice device)
     {
-        if (change !=
-            InputActionChange.ActionPerformed)
+        if (!eventPtr.IsA<StateEvent>() &&
+            !eventPtr.IsA<DeltaStateEvent>())
             return;
 
-        if (Keyboard.current != null &&
-            Keyboard.current.anyKey.wasPressedThisFrame)
+        if (device is Gamepad)
         {
-            SetDevice(
-                InputDeviceType.KeyboardMouse);
-
-            return;
+            SetDevice(InputDeviceType.Xbox);
         }
-
-        if (Gamepad.current != null &&
-            Gamepad.current.wasUpdatedThisFrame)
+        else if (device is Keyboard ||
+                 device is Mouse)
         {
-            SetDevice(
-                InputDeviceType.Xbox);
+            SetDevice(InputDeviceType.KeyboardMouse);
         }
     }
 
@@ -70,36 +58,15 @@ public class InputDeviceManager : MonoBehaviour
 
         CurrentDevice = device;
 
-        OnDeviceChanged?.Invoke();
+        Debug.Log($"Dispositivo actual: {device}");
+
+        OnDeviceChanged?.Invoke(device);
     }
+}
 
-    public Sprite GetSprite(
-        InputActionType action)
-    {
-        switch (action)
-        {
-            case InputActionType.Interact:
-
-                return CurrentDevice ==
-                    InputDeviceType.KeyboardMouse
-                    ? icons.keyboardInteract
-                    : icons.xboxInteract;
-
-            case InputActionType.PreviousDrink:
-
-                return CurrentDevice ==
-                    InputDeviceType.KeyboardMouse
-                    ? icons.keyboardPrevious
-                    : icons.xboxPrevious;
-
-            case InputActionType.NextDrink:
-
-                return CurrentDevice ==
-                    InputDeviceType.KeyboardMouse
-                    ? icons.keyboardNext
-                    : icons.xboxNext;
-        }
-
-        return null;
-    }
+[System.Serializable]
+public class InputIcon
+{
+    public InputActionType action;
+    public Image image;
 }

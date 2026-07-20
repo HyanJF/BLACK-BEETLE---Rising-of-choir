@@ -1,14 +1,10 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class ActionUI : MonoBehaviour
 {
     [SerializeField]
     private GameObject root;
-
-    [SerializeField]
-    private Image inputImage;
 
     [SerializeField]
     private TMP_Text actionText;
@@ -25,33 +21,33 @@ public class ActionUI : MonoBehaviour
     [SerializeField]
     private InputActionType actionType;
 
+    [SerializeField]
+    private InputIcon interactIcon;
+
     private void Awake()
     {
-        if (InputDeviceManager.Instance != null)
-        {
-            InputDeviceManager.Instance
-                .OnDeviceChanged += RefreshIcon;
-        }
-
-        RefreshIcon();
-
         Hide();
     }
 
-    private void OnDestroy()
+    private void OnEnable()
     {
-        if (InputDeviceManager.Instance != null)
-        {
-            InputDeviceManager.Instance
-                .OnDeviceChanged -= RefreshIcon;
-        }
+        if (InputManager.Instance == null)
+            return;
+
+        InputManager.Instance.OnInputDeviceChanged += RefreshIcon;
+
+        RefreshIcon();
+    }
+
+    private void OnDisable()
+    {
+        InputManager.Instance.OnInputDeviceChanged -= RefreshIcon;
     }
 
     public void Show(
         string action,
         bool interactable)
     {
-        RefreshIcon();
 
         root.SetActive(true);
 
@@ -63,7 +59,7 @@ public class ActionUI : MonoBehaviour
     public void SetInteractable(
         bool value)
     {
-        inputImage.color =
+        interactIcon.image.color =
             value
             ? enabledColor
             : disabledColor;
@@ -76,11 +72,9 @@ public class ActionUI : MonoBehaviour
 
     private void RefreshIcon()
     {
-        if (InputDeviceManager.Instance == null)
-            return;
+        interactIcon.image.sprite =
+            InputManager.Instance.GetSprite(interactIcon.action);
 
-        inputImage.sprite =
-            InputDeviceManager.Instance
-                .GetSprite(actionType);
+
     }
 }

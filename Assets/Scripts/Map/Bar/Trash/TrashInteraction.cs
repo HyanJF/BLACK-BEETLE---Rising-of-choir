@@ -4,36 +4,36 @@ public class TrashInteraction :
     MonoBehaviour,
     IInteractable
 {
-
     [SerializeField]
-    private bool playerInside;
+    private TrashController controller;
 
     public bool CanInteract =>
-        playerInside;
+    controller.PlayerInside;
 
     private void OnTriggerEnter2D(
         Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
-            playerInside = true;
+        if (!collision.CompareTag("Player"))
+            return;
 
+        controller.PlayerEntered();
     }
 
     private void OnTriggerExit2D(
         Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
-            playerInside = false;
+        if (!collision.CompareTag("Player"))
+            return;
+
+        controller.PlayerExited();
     }
 
-    public void Interact(PlayerManager player)
+    public void Interact(
+        PlayerManager player)
     {
         if (!CanInteract)
             return;
 
-        if (!player.Inventory.RemoveRandomDrink())
-        {
-            return;
-        }
+        player.Inventory.RemoveRandomDrink();
     }
 }

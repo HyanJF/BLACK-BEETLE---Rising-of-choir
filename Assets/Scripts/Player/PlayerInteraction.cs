@@ -29,9 +29,9 @@ public class PlayerInteraction : MonoBehaviour
         }
     }
 
-    public void OnInteract(
-        InputAction.CallbackContext context)
+    public void OnInteract(InputAction.CallbackContext context)
     {
+
         if (!context.performed)
             return;
 
@@ -41,6 +41,7 @@ public class PlayerInteraction : MonoBehaviour
     public void OnPreviousDrink(
         InputAction.CallbackContext context)
     {
+
         if (!context.performed)
             return;
 
@@ -50,6 +51,7 @@ public class PlayerInteraction : MonoBehaviour
     public void OnNextDrink(
         InputAction.CallbackContext context)
     {
+
         if (!context.performed)
             return;
 

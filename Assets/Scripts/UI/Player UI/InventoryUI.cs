@@ -10,15 +10,11 @@ public class InventoryUI : MonoBehaviour
     private InventorySlotUI[] slots;
 
     [SerializeField]
-    private Image previousInputImage;
-
-    [SerializeField]
-    private Image nextInputImage;
+    private InputIcon[] inputIcons;
 
     private void Start()
     {
         Refresh();
-
         RefreshInputIcons();
     }
 
@@ -26,17 +22,20 @@ public class InventoryUI : MonoBehaviour
     {
         inventory.OnInventoryChanged += Refresh;
 
-        InputDeviceManager.Instance.OnDeviceChanged +=
-            RefreshInputIcons;
+        if (InputManager.Instance != null)
+        {
+            InputManager.Instance.OnInputDeviceChanged +=
+                RefreshInputIcons;
+        }
     }
 
     private void OnDisable()
     {
         inventory.OnInventoryChanged -= Refresh;
 
-        if (InputDeviceManager.Instance != null)
+        if (InputManager.Instance != null)
         {
-            InputDeviceManager.Instance.OnDeviceChanged -=
+            InputManager.Instance.OnInputDeviceChanged -=
                 RefreshInputIcons;
         }
     }
@@ -50,15 +49,18 @@ public class InventoryUI : MonoBehaviour
             if (index < inventory.Count)
             {
                 slots[index].SetDrink(
-                    GameDataBase.Instance.drinkData.GetSprite(inventory.Drinks[index]));
+                    GameDataBase.Instance.drinkData.GetSprite(
+                        inventory.Drinks[index]));
 
-                slots[index].SetSelected(index == inventory.SelectedIndex);
+                slots[index].SetSelected(
+                    index == inventory.SelectedIndex);
             }
             else
             {
                 slots[index].SetEmpty();
 
-                slots[index].SetSelected(index == inventory.SelectedIndex);
+                slots[index].SetSelected(
+                    index == inventory.SelectedIndex);
             }
         }
 
@@ -70,12 +72,10 @@ public class InventoryUI : MonoBehaviour
 
     private void RefreshInputIcons()
     {
-        previousInputImage.sprite =
-            InputDeviceManager.Instance.GetSprite(
-                InputActionType.PreviousDrink);
-
-        nextInputImage.sprite =
-            InputDeviceManager.Instance.GetSprite(
-                InputActionType.NextDrink);
+        foreach (InputIcon icon in inputIcons)
+        {
+            icon.image.sprite =
+                InputManager.Instance.GetSprite(icon.action);
+        }
     }
 }
